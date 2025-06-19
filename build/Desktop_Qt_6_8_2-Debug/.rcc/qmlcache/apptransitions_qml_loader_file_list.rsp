@@ -1,0 +1,6 @@
+--resource
+/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/build/Desktop_Qt_6_8_2-Debug/.qt/rcc/qmake_transitions.qrc
+--resource
+/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/build/Desktop_Qt_6_8_2-Debug/.qt/rcc/apptransitions_raw_qml_0.qrc
+/qt/qml/transitions/Main.qml
+/qt/qml/transitions/Page.qml

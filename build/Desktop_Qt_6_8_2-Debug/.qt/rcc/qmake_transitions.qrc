@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt/qml/transitions">
+    <file alias="qmldir">/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/build/Desktop_Qt_6_8_2-Debug/qmldir</file>
+  </qresource>
+</RCC>
+

@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="/qt/qml/Test_QML/">
+    <file alias="Main.qml">/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/Main.qml</file>
+    <file alias="ConfigWindow.qml">/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/ConfigWindow.qml</file>
+    <file alias="Resources.qrc">/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/Resources.qrc</file>
+  </qresource>
+</RCC>
+

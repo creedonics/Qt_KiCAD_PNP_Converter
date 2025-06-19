@@ -1,0 +1,6 @@
+module Test_QML
+typeinfo appTest_QML.qmltypes
+prefer :/qt/qml/Test_QML/
+Main 1.0 Main.qml
+ConfigWindow 1.0 ConfigWindow.qml
+

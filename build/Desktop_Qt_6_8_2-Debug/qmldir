@@ -1,0 +1,9 @@
+module transitions
+linktarget apptransitionsplugin
+optional plugin apptransitionsplugin
+classname transitionsPlugin
+typeinfo apptransitions.qmltypes
+prefer :/qt/qml/transitions/
+Main 1.0 Main.qml
+Page 1.0 Page.qml
+

@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>src/offset.png</file>
+        <file>src/zoom.png</file>
+        <file>src/rot.png</file>
+        <file>src/mirror.png</file>
+    </qresource>
+</RCC>

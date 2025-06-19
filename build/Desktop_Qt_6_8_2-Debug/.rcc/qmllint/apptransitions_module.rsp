@@ -1,0 +1,8 @@
+-I
+/home/creedonix/Qt/6.8.2/gcc_64/qml
+--resource
+/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/build/Desktop_Qt_6_8_2-Debug/.qt/rcc/qmake_transitions.qrc
+--resource
+/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/build/Desktop_Qt_6_8_2-Debug/.qt/rcc/apptransitions_raw_qml_0.qrc
+--module
+transitions

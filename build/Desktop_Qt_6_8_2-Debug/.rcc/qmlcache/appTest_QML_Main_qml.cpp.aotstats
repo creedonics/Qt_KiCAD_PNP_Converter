@@ -1,0 +1,76 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on onClicked.",
+                        "functionName": "onClicked",
+                        "line": 46
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on right.",
+                        "functionName": "right",
+                        "line": 42
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on bottom.",
+                        "functionName": "bottom",
+                        "line": 44
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on onClicked.",
+                        "functionName": "onClicked",
+                        "line": 58
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on left.",
+                        "functionName": "left",
+                        "line": 54
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on bottom.",
+                        "functionName": "bottom",
+                        "line": 56
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 129,
+                        "errorMessage": "",
+                        "functionName": "nameFilters",
+                        "line": 66
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "Cannot load property OpenFile from  stored as QQuickFileDialog.",
+                        "functionName": "onAccepted",
+                        "line": 68
+                    }
+                ],
+                "filepath": "/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/Main.qml"
+            }
+        ],
+        "moduleId": "Test_QML(appTest_QML)"
+    }
+]

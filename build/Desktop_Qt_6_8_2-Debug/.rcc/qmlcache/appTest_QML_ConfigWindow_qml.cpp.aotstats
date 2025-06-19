@@ -1,0 +1,396 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 143,
+                        "errorMessage": "",
+                        "functionName": "verticalItemAlignment",
+                        "line": 21
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "",
+                        "functionName": "horizontalItemAlignment",
+                        "line": 22
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 43,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "",
+                        "functionName": "left",
+                        "line": 36
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "",
+                        "functionName": "top",
+                        "line": 38
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 52,
+                        "errorMessage": "",
+                        "functionName": "fillMode",
+                        "line": 45
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 44
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "",
+                        "functionName": "top",
+                        "line": 59
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 61
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "",
+                        "functionName": "fillMode",
+                        "line": 68
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 32,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 67
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "",
+                        "functionName": "left",
+                        "line": 82
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "top",
+                        "line": 84
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 43,
+                        "errorMessage": "",
+                        "functionName": "fillMode",
+                        "line": 91
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 32,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 90
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "",
+                        "functionName": "top",
+                        "line": 105
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 107
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 47,
+                        "errorMessage": "",
+                        "functionName": "fillMode",
+                        "line": 114
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 32,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 113
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "",
+                        "functionName": "left",
+                        "line": 123
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 125
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on verticalAlignment.",
+                        "functionName": "verticalAlignment",
+                        "line": 143
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 41,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on mouseSelectionMode.",
+                        "functionName": "mouseSelectionMode",
+                        "line": 144
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 39,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on centerIn.",
+                        "functionName": "centerIn",
+                        "line": 138
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 45,
+                        "errorMessage": "",
+                        "functionName": "notation",
+                        "line": 150
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on verticalAlignment.",
+                        "functionName": "verticalAlignment",
+                        "line": 171
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 41,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on mouseSelectionMode.",
+                        "functionName": "mouseSelectionMode",
+                        "line": 172
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 39,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on centerIn.",
+                        "functionName": "centerIn",
+                        "line": 166
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "",
+                        "functionName": "notation",
+                        "line": 178
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 65,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 192
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 194
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on centerIn.",
+                        "functionName": "centerIn",
+                        "line": 198
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on bottom.",
+                        "functionName": "bottom",
+                        "line": 202
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on right.",
+                        "functionName": "right",
+                        "line": 207
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on weight.",
+                        "functionName": "weight",
+                        "line": 204
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 220
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "left",
+                        "line": 222
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on verticalAlignment.",
+                        "functionName": "verticalAlignment",
+                        "line": 232
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on mouseSelectionMode.",
+                        "functionName": "mouseSelectionMode",
+                        "line": 233
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on centerIn.",
+                        "functionName": "centerIn",
+                        "line": 227
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "",
+                        "functionName": "notation",
+                        "line": 239
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 252
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 253
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 46,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 258
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on weight.",
+                        "functionName": "weight",
+                        "line": 267
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on weight.",
+                        "functionName": "weight",
+                        "line": 277
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 1,
+                        "errorMessage": "Cannot resolve property type  for binding on weight.",
+                        "functionName": "weight",
+                        "line": 286
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Cannot resolve property type  for binding on weight.",
+                        "functionName": "weight",
+                        "line": 295
+                    }
+                ],
+                "filepath": "/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/ConfigWindow.qml"
+            }
+        ],
+        "moduleId": "Test_QML(appTest_QML)"
+    }
+]

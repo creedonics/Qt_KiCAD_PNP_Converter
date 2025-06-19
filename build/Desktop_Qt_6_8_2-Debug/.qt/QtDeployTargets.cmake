@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_appTest_QML_FILE /home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/build/Desktop_Qt_6_8_2-Debug/appTest_QML)
+set(__QT_DEPLOY_TARGET_appTest_QML_TYPE EXECUTABLE)

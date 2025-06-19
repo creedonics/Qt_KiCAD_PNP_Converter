@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="/qt/qml/transitions/">
+    <file alias="Main.qml">/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/Main.qml</file>
+    <file alias="Page.qml">/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/Page.qml</file>
+    <file alias="qt-logo.png">/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/qt-logo.png</file>
+  </qresource>
+</RCC>
+

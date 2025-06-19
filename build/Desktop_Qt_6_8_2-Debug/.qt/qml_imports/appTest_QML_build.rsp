@@ -1,0 +1,14 @@
+-rootPath
+/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML
+-cmake-output
+-output-file
+/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/build/Desktop_Qt_6_8_2-Debug/.qt/qml_imports/appTest_QML_build.cmake
+-importPath
+/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/build/Desktop_Qt_6_8_2-Debug/Test_QML
+-importPath
+/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/build/Desktop_Qt_6_8_2-Debug
+-importPath
+/home/creedonix/Qt/6.8.2/gcc_64/qml
+-qrcFiles
+/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/build/Desktop_Qt_6_8_2-Debug/.qt/rcc/qmake_Test_QML.qrc
+/home/creedonix/Studies/Qt/Qt_Core_beginners/Test_QML/build/Desktop_Qt_6_8_2-Debug/.qt/rcc/appTest_QML_raw_qml_0.qrc
