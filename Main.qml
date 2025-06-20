@@ -11,41 +11,87 @@ Window {
     width: 1280
     height: 720
     visible: true
-    title: qsTr("DuMoulinet")
+    minimumHeight: 720
+    minimumWidth: 1280
+    flags: Qt.Window
+    title: qsTr("DuMoulinette")
+
+    GridLayout {
+        id: gridLayout
+        anchors.fill: parent
+        anchors.leftMargin: 50
+        anchors.rightMargin: 50
+        anchors.topMargin: 50
+        anchors.bottomMargin: 50
+        columnSpacing: 150
+        columns: 2
+        rows: 1
+        uniformCellWidths: true
+        uniformCellHeights: true
 
 
-    Button {
-        id: fileDialogButton
-        width: 200
-        height: 50
-        anchors.right: parent.horizontalCenter
-        anchors.rightMargin: 100
-        anchors.bottom: parent.verticalCenter
-        text: qsTr("Choose a File")
-        onClicked: fileDialog.open()
-    }
+        Button {
+            id: fileDialogButton
+            width: 200
+            height: 50
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            text: qsTr("Choose a File")
+            highlighted: true
+            onClicked: fileDialog.open()
+        }
+
+        Rectangle {
+            id: borderCadFileDropArea
+            width: cadFileDropArea.width + 5
+            height: cadFileDropArea.height + 5
+            color: "#00000000"
+            border.color: "#c30d1263"
+            border.width: 1
+            radius: 10.0
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            DropArea {
+                id: cadFileDropArea
+                width: 200
+                height: 200
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                //Layout.preferredHeight: 200
+                //Layout.preferredWidth: 200
+                Image {
+                    id: dragDropImage
+                    width: 200
+                    height: 200
+                    source: "qrc:///src/DragDrop.jpg"
+                    anchors.centerIn: parent
+                    fillMode: Image.PreserveAspectFit
+                    sourceSize.height: 200
+                    sourceSize.width: 200
+                }
+            }
+        }
 
 
-    Button {
-        id: configButton
-        width: 200
-        height: 50
-        anchors.left: parent.horizontalCenter
-        anchors.leftMargin: 100
-        anchors.bottom: parent.verticalCenter
-        text: qsTr("Configuration")
-        onClicked: {
-            var component = Qt.createComponent("ConfigWindow.qml");
-            component.createObject();
+        Button {
+            id: configButton
+            width: 200
+            height: 50
+            text: qsTr("Configuration")
+            Layout.columnSpan: 2
+            Layout.rowSpan: 1
+            Layout.preferredWidth: -1
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            onClicked: {
+                var component = Qt.createComponent("ConfigWindow.qml");
+                component.createObject();
+            }
+        }
+
+        FileDialog {
+            id: fileDialog
+            nameFilters: ["KiCAD Positioning files (*.pos)", "Pcad Pick and Place files (*.pnp)"]
+            //currentFolder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
+            onAccepted: fileDialog.OpenFile
         }
     }
-
-    FileDialog {
-        id: fileDialog
-        nameFilters: ["KiCAD Positioning files (*.pos)", "Pcad Pick and Place files (*.pnp)"]
-        //currentFolder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
-        onAccepted: fileDialog.OpenFile
-    }
-
 }
 

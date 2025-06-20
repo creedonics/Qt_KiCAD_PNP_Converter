@@ -4,5 +4,6 @@
         <file>src/zoom.png</file>
         <file>src/rot.png</file>
         <file>src/mirror.png</file>
+        <file>src/DragDrop.jpg</file>
     </qresource>
 </RCC>

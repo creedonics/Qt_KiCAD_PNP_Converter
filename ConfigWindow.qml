@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls 2.15
 import QtCore
+import QtQuick.Layouts
 
 
 Window {
@@ -9,132 +10,196 @@ Window {
     height: 720
     visible: true
     color: "#ffffff"
+    minimumHeight: 720
+    minimumWidth: 1280
+    flags: Qt.SubWindow
     title: qsTr("Configuration Window")
-    Grid {
+    GridLayout {
         id: grid
         anchors.fill: parent
         anchors.leftMargin: 50
         anchors.rightMargin: 50
         anchors.topMargin: 50
         anchors.bottomMargin: 50
-        spacing: 50
-        verticalItemAlignment: Grid.AlignVCenter
-        horizontalItemAlignment: Grid.AlignHCenter
+        uniformCellWidths: false
+        uniformCellHeights: false
         columns: 4
-        columnSpacing: 100
-        rows: 2
-        rowSpacing: 300
+        columnSpacing: 50
+        rows: 3
+        rowSpacing: 50
+
+        Text {
+            id: offsetText
+            width: 200
+            height: 50
+            text: "Offset"
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignVCenter
+            font.italic: true
+            font.bold: true
+            font.pointSize: 26
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+
+        }
+
+        Text {
+            id: mirrorText
+            width: 200
+            height: 50
+            text: "Mirror effect"
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignVCenter
+            font.italic: true
+            font.bold: true
+            font.pointSize: 26
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+        }
+
+        Text {
+            id: scaleText
+            width: 200
+            height: 50
+            text: "Scaling"
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignVCenter
+            font.italic: true
+            font.bold: true
+            font.pointSize: 26
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+        }
+
+        Text {
+            id: rotText
+            width: 200
+            height: 50
+            text: "Rotation"
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignVCenter
+            font.italic: true
+            font.bold: true
+            font.pointSize: 26
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+        }
 
         Rectangle {
-            id: rect1
-            width: 255
-            height: 255
+            id: borderOffsetImage
+            width: offsetImage.width + 5
+            height: offsetImage.height + 5
             color: "#00000000"
             border.color: "#c30d1263"
             border.width: 1
             radius: 10.0
-            anchors.left: parent.left
-            anchors.leftMargin: 5
-            anchors.top: parent.top
-            anchors.topMargin: 5
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            //anchors.left: parent.left
+            //anchors.leftMargin: 5
+            //anchors.top: parent.top
+            //anchors.topMargin: 5
             Image {
-                width: 250
-                height: 250
+                id: offsetImage
+                width: 200
+                height: 200
                 source: "qrc:///src/offset.png"
                 anchors.centerIn: parent
                 fillMode: Image.PreserveAspectFit
-                sourceSize.height: 250
-                sourceSize.width: 250
+                sourceSize.height: 200
+                sourceSize.width: 200
             }
         }
         
         Rectangle {
-            id: rect2
-            width: 255
-            height: 255
+            id: borderMirrorImage
+            width: mirrorImage.width + 5
+            height: mirrorImage.height + 5
             color: "#00000000"
             border.color: "#c30d1263"
             border.width: 1
             radius: 10.0
-            anchors.top: parent.top
-            anchors.topMargin: 5
-            anchors.right: parent.horizontalCenter
-            anchors.rightMargin: 50
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            //anchors.top: parent.top
+            //anchors.topMargin: 5
+            //anchors.right: parent.horizontalCenter
+            //anchors.rightMargin: 50
             Image {
-                width: 250
-                height: 250
+                id: mirrorImage
+                width: 200
+                height: 200
                 source: "qrc:///src/mirror.png"
                 anchors.centerIn: parent
                 fillMode: Image.PreserveAspectFit
-                sourceSize.height: 250
-                sourceSize.width: 250
+                sourceSize.height: 200
+                sourceSize.width: 200
             }
         }
         
         Rectangle {
-            id: rect3
-            width: 255
-            height: 255
+            id: borderScaleImage
+            width: scaleImage.width + 5
+            height: scaleImage.height + 5
             color: "#00000000"
             border.color: "#c30d1263"
             border.width: 1
             radius: 10.0
-            anchors.left: parent.horizontalCenter
-            anchors.leftMargin: 50
-            anchors.top: parent.top
-            anchors.topMargin: 5
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            //anchors.left: parent.horizontalCenter
+            //anchors.leftMargin: 50
+            //anchors.top: parent.top
+            //anchors.topMargin: 5
             Image {
-                width: 250
-                height: 250
+                id: scaleImage
+                width: 200
+                height: 200
                 source: "qrc:///src/zoom.png"
                 anchors.centerIn: parent
                 fillMode: Image.PreserveAspectFit
-                sourceSize.height: 250
-                sourceSize.width: 250
+                sourceSize.height: 200
+                sourceSize.width: 200
             }
         }
         
         Rectangle {
-            id: rect4
-            width: 255
-            height: 255
+            id: borderRotImage
+            width: rotImage.width + 5
+            height: rotImage.height + 5
             color: "#00000000"
             border.color: "#c30d1263"
             border.width: 1
             radius: 10.0
-            anchors.top: parent.top
-            anchors.topMargin: 5
-            anchors.right: parent.right
-            anchors.rightMargin: 5
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            //anchors.top: parent.top
+            //anchors.topMargin: 5
+            //anchors.right: parent.right
+            //anchors.rightMargin: 5
             Image {
-                width: 250
-                height: 250
+                id: rotImage
+                width: 200
+                height: 200
                 source: "qrc:///src/rot.png"
                 anchors.centerIn: parent
                 fillMode: Image.PreserveAspectFit
-                sourceSize.height: 250
-                sourceSize.width: 250
+                sourceSize.height: 200
+                sourceSize.width: 200
             }
         }
         
         Column {
-            id: decalageColumn
+            id: offsetColumn
             spacing: 10
-            anchors.left: parent.left
-            anchors.leftMargin: 5
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 5
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            //anchors.left: parent.left
+            //anchors.leftMargin: 5
+            //anchors.bottom: parent.bottom
+            //anchors.bottomMargin: 5
             Rectangle {
-                id: borderdecalageX
-                width: 220
-                height: 70
+                id: borderOffsetXTextField
+                width: offsetXTextField.width + 20
+                height: offsetXTextField.height + 20
                 color: "#00000000"
                 radius: 10.0
                 border.color: "#c30d1263"
                 border.width: 1
                 TextField {
-                    id: decalageX
-                    placeholderText: qsTr("decalage X")
+                    id: offsetXTextField
+                    placeholderText: qsTr("Offset X Axis")
                     anchors.centerIn: parent
                     width: 200
                     height: 50
@@ -153,16 +218,16 @@ Window {
             }
 
             Rectangle {
-                id: borderdecalageY
-                width: 220
-                height: 70
+                id: borderOffsetYTextField
+                width: offsetYTextField.width + 20
+                height: offsetYTextField.height + 20
                 color: "#00000000"
                 radius: 10.0
                 border.color: "#c30d1263"
                 border.width: 1
                 TextField {
-                    id: decalageY
-                    placeholderText: qsTr("decalage Y")
+                    id: offsetYTextField
+                    placeholderText: qsTr("Offset Y Axis")
                     anchors.centerIn: parent
                     width: 200
                     height: 50
@@ -183,18 +248,19 @@ Window {
         
         Rectangle {
             id: borderMirror
-            width: 220
-            height: 70
+            width: mirrorCheckBox.width + 20
+            height: mirrorCheckBox.height + 20
             color: "#00000000"
             radius: 10.0
             border.color: "#c30d1263"
             border.width: 1
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 5
-            anchors.right: parent.horizontalCenter
-            anchors.rightMargin: 75
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            //anchors.bottom: parent.bottom
+            //anchors.bottomMargin: 5
+            //anchors.right: parent.horizontalCenter
+            //anchors.rightMargin: 75
             CheckBox {
-                id: mirror
+                id: mirrorCheckBox
                 anchors.centerIn: parent
                 width: 200
                 height: 50
@@ -210,20 +276,21 @@ Window {
         }
         
         Rectangle {
-            id: borderZoom
+            id: borderScaleTextField
             width: 220
             height: 70
             color: "#00000000"
             radius: 10.0
             border.color: "#c30d1263"
             border.width: 1
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 5
-            anchors.left: parent.horizontalCenter
-            anchors.leftMargin: 75
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            //anchors.bottom: parent.bottom
+            //anchors.bottomMargin: 5
+            //anchors.left: parent.horizontalCenter
+            //anchors.leftMargin: 75
             TextField {
-                id: zoom
-                placeholderText: qsTr("Zoom")
+                id: scaleTextField
+                placeholderText: qsTr("Scale")
                 anchors.centerIn: parent
                 width: 200
                 height: 50
@@ -249,10 +316,11 @@ Window {
             radius: 10.0
             border.color: "#c30d1263"
             border.width: 1
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            anchors.rightMargin: 5
-            anchors.bottomMargin: 5
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            //anchors.right: parent.right
+            //anchors.bottom: parent.bottom
+            //anchors.rightMargin: 5
+            //anchors.bottomMargin: 5
             Column {
                 id: radioButtonsColumn
                 anchors.centerIn: parent
