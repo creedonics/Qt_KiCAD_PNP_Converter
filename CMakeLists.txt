@@ -5,6 +5,7 @@ project(Test_QML VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -13,6 +14,7 @@ set(CMAKE_AUTORCC ON)
 qt_add_executable(appTest_QML
     main.cpp
     Resources.qrc
+
 )
 
 qt_add_qml_module(appTest_QML
@@ -22,6 +24,8 @@ qt_add_qml_module(appTest_QML
         Main.qml
         QML_FILES ConfigWindow.qml
         RESOURCES Resources.qrc
+        SOURCES
+        SOURCES writeconf.h writeconf.cpp
 )
 
 
@@ -40,6 +44,7 @@ set_target_properties(appTest_QML PROPERTIES
 target_link_libraries(appTest_QML
     PRIVATE Qt6::Quick
 )
+target_link_libraries(appTest_QML PRIVATE Qt6::Core)
 
 include(GNUInstallDirs)
 install(TARGETS appTest_QML

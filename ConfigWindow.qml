@@ -14,6 +14,7 @@ Window {
     minimumWidth: 1280
     flags: Qt.SubWindow
     title: qsTr("Configuration Window")
+    property QString str;
     GridLayout {
         id: grid
         anchors.fill: parent
@@ -364,6 +365,34 @@ Window {
                     font.italic: true
                     font.pointSize: 32
                 }
+            }
+        }
+
+        Button {
+            id: clearButton
+            width: 200
+            height: 50
+            text: qsTr("Clear")
+            //Layout.columnSpan: 2
+            //Layout.rowSpan: 1
+            Layout.preferredWidth: -1
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            onClicked: {
+
+            }
+        }
+
+        Button {
+            id: validationButton
+            width: 200
+            height: 50
+            text: qsTr("Validate")
+            //Layout.columnSpan: 2
+            //Layout.rowSpan: 1
+            Layout.preferredWidth: -1
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            onClicked: {
+                //qInfo() <
             }
         }
     }    
