@@ -1,14 +1,16 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include "writeconf.h"
 
 int main(int argc, char *argv[])
 {
-    WriteConf dosmtth;
-
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+    WriteConf conf;
+    QQmlContext *context = engine.rootContext();
+    context->setContextProperty("conf", &conf);
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreationFailed,

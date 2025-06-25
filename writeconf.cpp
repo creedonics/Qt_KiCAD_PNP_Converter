@@ -47,25 +47,39 @@
 WriteConf::WriteConf(QObject *parent)
     : QObject{parent}
 {
-    QString wach = "wach kho cv";
-    qInfo() << "Hi " << wach;
 
+
+
+}
+
+void WriteConf::WritingMydataConfigFile()
+{
+    qInfo() << "Inside WriteConf => " << "offsetX : " << this->offsetX << " offsetY : " << this->offsetY << " scale : " << this->scale << " rot : " << this->rot << " mirror : " << this->mirror << "\n";
     QFile file("//home/creedonix/out.txt");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
 
     QTextStream out(&file);
-    out << "# MYDATA Configuration File" << 49 << "\n";
-    out << "[Parameters]" << 49 << "\n";
-    out << "Decalage X = %lf" << 49 << "\n";
-    out << "Decalage Y = %lf" << 49 << "\n";
-    out << "Zoom = %lf" << 49 << "\n";
-    out << "Angle = %lf" << 49 << "\n";
-    out << "Mirroir = %d" << 49 << "\n";
-
+    out << "# MYDATA Configuration File" << "\n";
+    out << "[Parameters]" << "\n";
+    out << "Decalage X = " << this->offsetX << "\n";
+    out << "Decalage Y = " << this->offsetY << "\n";
+    out << "Zoom = " << this->scale << "\n";
+    out << "Angle = " << this->rot << "\n";
+    out << "Mirroir = " << this->mirror << "\n";
 }
 
-void WriteConf::getThemStrings(QString &str)
+void WriteConf::getConfigParameters(QString _offsetX, QString _offsetY, QString _scale, int _rot, bool _mirror)
 {
-    qInfo() << str;
+    this->offsetX = _offsetX.toDouble();
+    this->offsetY = _offsetY.toDouble();
+    this->scale = _scale.toDouble();
+    this->rot = _rot;
+    this->mirror = _mirror;
+
+    qInfo() << "offsetX : " << this->offsetX << " offsetY : " << this->offsetY << " scale : " << this->scale << " rot : " << this->rot << " mirror : " << this->mirror << "\n";
+
+    WritingMydataConfigFile();
 }
+
+

@@ -16,6 +16,16 @@ Window {
     flags: Qt.Window
     title: qsTr("DuMoulinette")
 
+    /*Connections {
+        target: conf // Specify the target to connect
+        /* Declare and implement the function as a parameter
+         * object and with a name similar to the name of the signal
+         * The difference is that we add on at the beginning and then write
+         * capitalized
+         * *
+
+    }*/
+
     GridLayout {
         id: gridLayout
         anchors.fill: parent

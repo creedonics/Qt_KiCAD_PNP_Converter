@@ -3,7 +3,6 @@ import QtQuick.Controls 2.15
 import QtCore
 import QtQuick.Layouts
 
-
 Window {
     id: configWindow
     width: 1280
@@ -14,7 +13,9 @@ Window {
     minimumWidth: 1280
     flags: Qt.SubWindow
     title: qsTr("Configuration Window")
-    property QString str;
+    //property QString str;
+    property int rot
+    property bool mirror
     GridLayout {
         id: grid
         anchors.fill: parent
@@ -278,8 +279,8 @@ Window {
         
         Rectangle {
             id: borderScaleTextField
-            width: 220
-            height: 70
+            width: scaleTextField.width + 20
+            height: scaleTextField.height + 20
             color: "#00000000"
             radius: 10.0
             border.color: "#c30d1263"
@@ -366,7 +367,10 @@ Window {
                     font.pointSize: 32
                 }
             }
+
+
         }
+
 
         Button {
             id: clearButton
@@ -393,6 +397,15 @@ Window {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             onClicked: {
                 //qInfo() <
+                scaleTextField.accepted()
+                offsetXTextField.accepted()
+                offsetYTextField.accepted()
+                if (pos0.checked) rot = 0
+                if (pos90.checked) rot = 90
+                if (pos180.checked) rot = 180
+                if (pos270.checked) rot = 270
+                conf.getConfigParameters(offsetXTextField.text, offsetYTextField.text, scaleTextField.text, rot, mirrorCheckBox.checked);
+
             }
         }
     }    

@@ -13,11 +13,18 @@ class WriteConf : public QObject
     Q_OBJECT
 public:
     explicit WriteConf(QObject *parent = nullptr);
+    double offsetX;
+    double offsetY;
+    double scale;
+    int rot;
+    bool mirror;
+    void WritingMydataConfigFile();
 
 signals:
 
 public slots :
-    void getThemStrings(QString &str);
+    void getConfigParameters(QString _offsetX, QString _offsetY, QString _scale, int _rot, bool _mirror);
+
 };
 
 #endif // WRITECONF_H
