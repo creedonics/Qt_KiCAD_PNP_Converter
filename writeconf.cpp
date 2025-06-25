@@ -54,8 +54,8 @@ WriteConf::WriteConf(QObject *parent)
 
 void WriteConf::WritingMydataConfigFile()
 {
-    qInfo() << "Inside WriteConf => " << "offsetX : " << this->offsetX << " offsetY : " << this->offsetY << " scale : " << this->scale << " rot : " << this->rot << " mirror : " << this->mirror << "\n";
-    QFile file("//home/creedonix/out.txt");
+    //qInfo() << "Inside WriteConf => " << "offsetX : " << this->offsetX << " offsetY : " << this->offsetY << " scale : " << this->scale << " rot : " << this->rot << " mirror : " << this->mirror << "\n";
+    QFile file("//home/creedonix/MydataConfigFile.ini");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
 
@@ -71,13 +71,16 @@ void WriteConf::WritingMydataConfigFile()
 
 void WriteConf::getConfigParameters(QString _offsetX, QString _offsetY, QString _scale, int _rot, bool _mirror)
 {
-    this->offsetX = _offsetX.toDouble();
-    this->offsetY = _offsetY.toDouble();
-    this->scale = _scale.toDouble();
+
+    //QLocale c(QLocale::English);
+    //qInfo() << "offset test : " << c.toDouble(_offsetX.replace(",", "."));
+    this->offsetX = _offsetX.replace(",", ".");
+    this->offsetY = _offsetY.replace(",", ".");
+    this->scale = _scale.replace(",", ".");
     this->rot = _rot;
     this->mirror = _mirror;
 
-    qInfo() << "offsetX : " << this->offsetX << " offsetY : " << this->offsetY << " scale : " << this->scale << " rot : " << this->rot << " mirror : " << this->mirror << "\n";
+    //qInfo() << "offsetX : " << this->offsetX << " offsetY : " << this->offsetY << " scale : " << this->scale << " rot : " << this->rot << " mirror : " << this->mirror << "\n";
 
     WritingMydataConfigFile();
 }

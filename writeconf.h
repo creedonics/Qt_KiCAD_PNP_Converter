@@ -13,9 +13,9 @@ class WriteConf : public QObject
     Q_OBJECT
 public:
     explicit WriteConf(QObject *parent = nullptr);
-    double offsetX;
-    double offsetY;
-    double scale;
+    QString offsetX;
+    QString offsetY;
+    QString scale;
     int rot;
     bool mirror;
     void WritingMydataConfigFile();

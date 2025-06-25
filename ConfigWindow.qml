@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls 2.15
 import QtCore
 import QtQuick.Layouts
+import QtQuick.Dialogs
 
 Window {
     id: configWindow
@@ -382,7 +383,11 @@ Window {
             Layout.preferredWidth: -1
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             onClicked: {
-
+                scaleTextField.clear()
+                offsetXTextField.clear()
+                offsetYTextField.clear()
+                pos0.checked = true
+                mirrorCheckBox.checked = false
             }
         }
 
@@ -396,7 +401,6 @@ Window {
             Layout.preferredWidth: -1
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             onClicked: {
-                //qInfo() <
                 scaleTextField.accepted()
                 offsetXTextField.accepted()
                 offsetYTextField.accepted()
@@ -404,9 +408,29 @@ Window {
                 if (pos90.checked) rot = 90
                 if (pos180.checked) rot = 180
                 if (pos270.checked) rot = 270
-                conf.getConfigParameters(offsetXTextField.text, offsetYTextField.text, scaleTextField.text, rot, mirrorCheckBox.checked);
+                W_Conf.getConfigParameters(offsetXTextField.text, offsetYTextField.text, scaleTextField.text, rot, mirrorCheckBox.checked);
 
             }
+        }
+
+        FileDialog {
+            id: configFileDialog
+            nameFilters: ["MYDATA Configuration File (*.ini)"]
+            //currentFolder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
+            onAccepted: {
+                configFileDialog.OpenFile
+
+            }
+        }
+
+        Button {
+            id: configFileDialogButton
+            width: 200
+            height: 50
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            text: qsTr("Choose a Config file")
+            highlighted: true
+            onClicked: configFileDialog.open()
         }
     }    
 }
