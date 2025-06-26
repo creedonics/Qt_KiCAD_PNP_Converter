@@ -12,10 +12,10 @@ class ReadConf : public QObject
 {
     Q_OBJECT
 public:
-    ReadConf();
+    explicit ReadConf(QObject *parent = nullptr);
 
 public slots :
-    void test(QUrl testing);
+    void readingMydataConfigFile(QUrl testing);
 };
 
 #endif // READCONF_H
