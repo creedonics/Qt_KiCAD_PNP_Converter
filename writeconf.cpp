@@ -55,7 +55,7 @@ WriteConf::WriteConf(QObject *parent)
 void WriteConf::WritingMydataConfigFile()
 {
     //qInfo() << "Inside WriteConf => " << "offsetX : " << this->offsetX << " offsetY : " << this->offsetY << " scale : " << this->scale << " rot : " << this->rot << " mirror : " << this->mirror << "\n";
-    QFile file("//home/creedonix/MydataConfigFile.ini");
+    QFile file("MydataConfigFile.ini");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
 

@@ -100,7 +100,10 @@ Window {
             id: fileDialog
             nameFilters: ["KiCAD Positioning files (*.pos)", "Pcad Pick and Place files (*.pnp)"]
             //currentFolder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
-            onAccepted: fileDialog.OpenFile
+            onAccepted: {
+                fileDialog.OpenFile
+                KiCADFile.getFilePathUrl(selectedFile);
+            }
         }
     }
 }

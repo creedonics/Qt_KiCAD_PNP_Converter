@@ -7,15 +7,21 @@
 #include <QStringList>
 #include <QTextStream>
 #include <QFile>
+#include "caddata.h"
 
 class ReadConf : public QObject
 {
     Q_OBJECT
 public:
     explicit ReadConf(QObject *parent = nullptr);
+    void ReadingMydataConfigFile(QString _FilePath);
+    QString FilePath;
+
+signals:
+    void sendCadConfigData(QString _ConfigData);
 
 public slots :
-    void readingMydataConfigFile(QUrl testing);
+    void getFilePathUrl(QUrl _FilePathUrl);
 };
 
 #endif // READCONF_H

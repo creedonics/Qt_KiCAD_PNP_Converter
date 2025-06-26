@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 REQUIRED COMPONENTS Quick)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -28,6 +30,8 @@ qt_add_qml_module(appTest_QML
         SOURCES
         SOURCES writeconf.h writeconf.cpp
         SOURCES readconf.h readconf.cpp
+        SOURCES caddata.h caddata.cpp
+        SOURCES readkicadfile.h readkicadfile.cpp
 )
 
 
@@ -46,6 +50,8 @@ set_target_properties(appTest_QML PROPERTIES
 target_link_libraries(appTest_QML
     PRIVATE Qt6::Quick
 )
+target_link_libraries(appTest_QML PRIVATE Qt6::Core)
+target_link_libraries(appTest_QML PRIVATE Qt6::Core)
 target_link_libraries(appTest_QML PRIVATE Qt6::Core)
 target_link_libraries(appTest_QML PRIVATE Qt6::Core)
 

@@ -419,7 +419,7 @@ Window {
             //currentFolder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
             onAccepted: {
                 configFileDialog.OpenFile
-                R_Conf.readingMydataConfigFile(selectedFile);
+                R_Conf.getFilePathUrl(selectedFile);
             }
         }
 
