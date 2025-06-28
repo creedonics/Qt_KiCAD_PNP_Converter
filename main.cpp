@@ -19,6 +19,10 @@ int main(int argc, char *argv[])
 
 
     QObject::connect(&R_Conf, &ReadConf::sendCadConfigData, &CadDataConf, &CadData::getCadConfigData);
+    QObject::connect(&KiCADFile, &ReadKiCADFile::sendKiCADNumberOfLines, &CadDataConf, &CadData::getKiCADNumberOfLines);
+    QObject::connect(&KiCADFile, &ReadKiCADFile::sendKiCADData, &CadDataConf, &CadData::getKiCADData);
+
+
     QQmlContext *KiCADFile_context = engine.rootContext();
     QQmlContext *W_Conf_context = engine.rootContext();
     QQmlContext *R_Conf_context = engine.rootContext();

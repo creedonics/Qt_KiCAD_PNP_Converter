@@ -14,9 +14,13 @@ class ReadKiCADFile : public QObject
     Q_OBJECT
 public:
     explicit ReadKiCADFile(QObject *parent = nullptr);
-    void ReadingKicadFile(QString _FilePath);
+    void ReadingKicadFile(QString _FilePath, int _KiCADNumberOfLines);
+    void GetKicadNumberOfLines(QString _FilePath, int _KiCADNumberOfLines);
+    int KiCADNumberOfLines;
 
 signals:
+    void sendKiCADData(QStringList _KiCADData);
+    void sendKiCADNumberOfLines(int _KiCADNumberOfLines);
 
 public slots:
     void getFilePathUrl(QUrl _FilePathUrl);

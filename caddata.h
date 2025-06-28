@@ -14,13 +14,19 @@ class CadData : public QObject
 public:
     explicit CadData(QObject *parent = nullptr);
     QStringList ConfigData;
-    QStringList KiCADData;
+    QList<QStringList> KiCADData;
+    int KiCADNumberOfLines;
+    int KiCADIterator = 0;
+
+    void FindFiducials(QList<QStringList> _KiCADData);
+    QList<int> FID1, FID2;
 
 signals:
 
 public slots:
     void getCadConfigData(QString _ConfigData);
-    void getKiCADData(QString _KiCADData);
+    void getKiCADData(QStringList _KiCADData);
+    void getKiCADNumberOfLines(int _KiCADNumberOfLines);
 };
 
 #endif // CADDATA_H
