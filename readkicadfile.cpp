@@ -9,20 +9,17 @@ void ReadKiCADFile::ReadingKicadFile(QString _FilePath, int _KiCADNumberOfLines)
     QFile file(_FilePath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
-
+    int KiCADNumberOfComponents = 0;
+    QList<QStringList> KiCADData;
     QTextStream in(&file);
     while (!in.atEnd()) {
         QString line = in.readLine();
-        int i = 0;
-        QStringList list[this->KiCADNumberOfLines];
         if(line.indexOf("#") == -1) {
-            /*list[i] << line.simplified().split(' ');
-            qInfo() << list[i];
-            i++;*/
-            emit sendKiCADData(line.simplified().split(' '));
-            //emit sendCadConfigData(line.sliced(i + 2));
+            KiCADData.append(line.simplified().split(' '));
+            KiCADNumberOfComponents++;
         }
     }
+    emit sendKiCADData(KiCADData, KiCADNumberOfComponents);
 }
 
 void ReadKiCADFile::GetKicadNumberOfLines(QString _FilePath, int _KiCADNumberOfLines)

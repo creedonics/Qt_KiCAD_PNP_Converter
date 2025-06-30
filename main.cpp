@@ -5,6 +5,7 @@
 #include "readconf.h"
 #include "caddata.h"
 #include "readkicadfile.h"
+#include "readlibfile.h"
 
 
 
@@ -14,21 +15,28 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     WriteConf W_Conf;
     ReadConf R_Conf;
-    CadData CadDataConf;
+    CadData CadDataElem;
     ReadKiCADFile KiCADFile;
+    ReadLibFile LibFile;
 
 
-    QObject::connect(&R_Conf, &ReadConf::sendCadConfigData, &CadDataConf, &CadData::getCadConfigData);
-    QObject::connect(&KiCADFile, &ReadKiCADFile::sendKiCADNumberOfLines, &CadDataConf, &CadData::getKiCADNumberOfLines);
-    QObject::connect(&KiCADFile, &ReadKiCADFile::sendKiCADData, &CadDataConf, &CadData::getKiCADData);
+    QObject::connect(&R_Conf, &ReadConf::sendCadConfigData, &CadDataElem, &CadData::getCadConfigData);
+    QObject::connect(&KiCADFile, &ReadKiCADFile::sendKiCADNumberOfLines, &CadDataElem, &CadData::getKiCADNumberOfLines);
+    QObject::connect(&KiCADFile, &ReadKiCADFile::sendKiCADData, &CadDataElem, &CadData::getKiCADData);
+    QObject::connect(&LibFile, &ReadLibFile::sendLibData, &CadDataElem, &CadData::getLibData);
 
 
     QQmlContext *KiCADFile_context = engine.rootContext();
     QQmlContext *W_Conf_context = engine.rootContext();
     QQmlContext *R_Conf_context = engine.rootContext();
+    QQmlContext *LibFile_context = engine.rootContext();
+
+
     KiCADFile_context->setContextProperty("KiCADFile", &KiCADFile);
     W_Conf_context->setContextProperty("W_Conf", &W_Conf);
     R_Conf_context->setContextProperty("R_Conf", &R_Conf);
+    LibFile_context->setContextProperty("LibFile", &LibFile);
+
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreationFailed,

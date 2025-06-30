@@ -368,8 +368,6 @@ Window {
                     font.pointSize: 32
                 }
             }
-
-
         }
 
 

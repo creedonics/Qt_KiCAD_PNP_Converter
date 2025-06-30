@@ -1,5 +1,6 @@
 #include "caddata.h"
 
+
 //-------------------------------------------------------------------------------------------------//
 //------------------------------*** Search for Fiducial markers ***--------------------------------//
 //-------------------------------------------------------------------------------------------------//
@@ -69,14 +70,22 @@ int GetFiducials(struct CadComponent *comp, struct FID *FID1_PCB, struct FID *FI
 
 CadData::CadData(QObject *parent)
     : QObject{parent}
-{}
-
-void CadData::FindFiducials(QList<QStringList> _KiCADData)
 {
-    int i = 0;
-    if(_KiCADData[i][0].contains("FID1")){
-        qInfo() << _KiCADData[i][2];
-        i++;
+
+}
+
+void CadData::FindFiducials(QStringList _KiCADData) // need to fix this
+{
+    if(_KiCADData[0].contains("FID1")){
+        FID1_X = _KiCADData[PosX].toDouble();
+        FID1_Y = _KiCADData[PosY].toDouble();
+        //qInfo() << "FID1 => " <<"PosX : " << FID1_X << "PosY : " << FID1_Y;
+
+    }
+    if(_KiCADData[0].contains("FID2")){
+        FID2_X = _KiCADData[PosX].toDouble();
+        FID2_Y = _KiCADData[PosY].toDouble();
+        //qInfo() << "FID2 => " <<"PosX : " << FID2_X << "PosY : " << FID2_Y;
     }
 }
 
@@ -86,15 +95,43 @@ void CadData::getCadConfigData(QString _ConfigData)
     //qInfo() << "CAD : " << ConfigData;
 }
 
-void CadData::getKiCADData(QStringList _KiCADData)
+void CadData::getLibData(QList<QStringList> _LibData, int _LibFileNumberOfLines)
 {
-    this->KiCADData.append(_KiCADData);
+    //qInfo() << _LibData;
+    //if((strcmp(comp[i].Type, TempLibFileVal[(j-1)*7]) == 0) && (strcmp(comp[i].Value, TempLibFileVal[1+(j-1)*7]) == 0))
+    //if((this->KiCADData[KiCADIterator][Ref] == _LibData[typeboitierCAO]) && (this->KiCADData[KiCADIterator][Val] == _LibData[valeurCAO])){
+    //QListIterator<QStringList> LibDataIterator(this->LibData);
+    //int i=0;
+    this->LibData = _LibData;
+    this->LibFileNumberOfLines = _LibFileNumberOfLines;
+    qInfo() << LibData;
+    qInfo() << LibFileNumberOfLines;
 
-    this->KiCADIterator++;
-    if (this->KiCADIterator + 1 == this->KiCADNumberOfLines){
-        FindFiducials(this->KiCADData);
-        this->KiCADIterator = 0;
+    /*
+    while(this->KiCADIterator != this->KiCADData.size()){
+        if((_LibData[typeboitierCAO].contains(this->KiCADData[KiCADIterator][Package])) && (_LibData[valeurCAO].contains(this->KiCADData[KiCADIterator][Val]))){
+            if(this->LibData.size() == 0){
+                this->LibData.append(_LibData);
+            }
+            else if( !( (this->LibData[i][typeboitierCAO].contains(this->KiCADData[KiCADIterator][Package])) && (this->LibData[i][valeurCAO].contains(this->KiCADData[KiCADIterator][Val])) ) ){
+                this->LibData.append(_LibData);
+                qInfo() << this->LibData[i];
+                i++;
+            }
+        }
+        this->KiCADIterator++;
     }
+    this->KiCADIterator = 0;*/
+    //this->KiCADIterator = this->KiCADIterator == this->KiCADData.size() ? 0 : this->KiCADIterator;
+}
+
+void CadData::getKiCADData(QList<QStringList> _KiCADData, int KiCADNumberOfComponents)
+{
+
+    this->KiCADData = _KiCADData;
+    //qInfo() << this->KiCADData.size();
+    //FindFiducials(_KiCADData.); need to fix this
+
 }
 
 void CadData::getKiCADNumberOfLines(int _KiCADNumberOfLines)

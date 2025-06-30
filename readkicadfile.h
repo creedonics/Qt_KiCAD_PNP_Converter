@@ -19,7 +19,7 @@ public:
     int KiCADNumberOfLines;
 
 signals:
-    void sendKiCADData(QStringList _KiCADData);
+    void sendKiCADData(QList<QStringList> _KiCADData, int _KiCADNumberOfLines);
     void sendKiCADNumberOfLines(int _KiCADNumberOfLines);
 
 public slots:
