@@ -12,47 +12,47 @@ int GetFiducials(struct CadComponent *comp, struct FID *FID1_PCB, struct FID *FI
     struct FID FID1, FID2;
     for(int i = 0; i < *KiCADNumberOfLines; i++){ // number fo lines represents the number of components
         if(strcmp(comp[i].RefDes, Fiducial1) == 0){
-            FID1.pos_x = strtod(comp[i].LocationX, NULL);
+            FID1_X = strtod(comp[i].LocationX, NULL);
             // Inch to Mils
-            //FID1.pos_x = FID1.pos_x * 1000;
-            FID1.pos_x = FID1.pos_x * 39.3701;
-            FID1.pos_x = round(FID1.pos_x);
-            printf("FID1.x : %lf\n", FID1.pos_x);
-            FID1.pos_y = strtod(comp[i].LocationY, NULL);
+            //FID1_X = FID1_X * 1000;
+            FID1_X = FID1_X * 39.3701;
+            FID1_X = round(FID1_X);
+            printf("FID1.x : %lf\n", FID1_X);
+            FID1_Y = strtod(comp[i].LocationY, NULL);
             // Inch to Mils
-            //FID1.pos_y = FID1.pos_y * 1000;
+            //FID1_Y = FID1_Y * 1000;
             // Applying mirroring for KiCAD
-            FID1.pos_y = FID1.pos_y * (-1);
-            FID1.pos_y = FID1.pos_y * 39.3701;
-            //if(Conf->Mirroir == 0) FID1_PCB->pos_y = FID1_PCB->pos_y * (-1);
-            FID1.pos_y = round(FID1.pos_y);
-            printf("FID1.y : %lf\n", FID1.pos_y);
-            FID1_PCB->pos_x = FID1.pos_x;
-            FID1_PCB->pos_y = FID1.pos_y;
-            FID1_LAY->pos_x = FID1.pos_x;
-            FID1_LAY->pos_y = FID1.pos_y;
+            FID1_Y = FID1_Y * (-1);
+            FID1_Y = FID1_Y * 39.3701;
+            //if(Conf->Mirroir == 0) FID1_PCB_Y = FID1_PCB_Y * (-1);
+            FID1_Y = round(FID1_Y);
+            printf("FID1.y : %lf\n", FID1_Y);
+            FID1_PCB_X = FID1_X;
+            FID1_PCB_Y = FID1_Y;
+            FID1_LAY_X = FID1_X;
+            FID1_LAY_Y = FID1_Y;
             FID1Found = 1;
         }
         if(strcmp(comp[i].RefDes, Fiducial2) == 0){
-            FID2.pos_x = strtod(comp[i].LocationX, NULL);
+            FID2_X = strtod(comp[i].LocationX, NULL);
             // Inch to Mils
-            //FID2.pos_x = FID2.pos_x * 1000;
-            FID2.pos_x = FID2.pos_x * 39.3701;
-            FID2.pos_x = round(FID2.pos_x);
-            printf("FID2.x : %lf\n", FID2.pos_x);
-            FID2.pos_y = strtod(comp[i].LocationY, NULL);
+            //FID2_X = FID2_X * 1000;
+            FID2_X = FID2_X * 39.3701;
+            FID2_X = round(FID2_X);
+            printf("FID2.x : %lf\n", FID2_X);
+            FID2_Y = strtod(comp[i].LocationY, NULL);
             // Inch to Mils
-            //FID2.pos_y = FID2.pos_y * 1000;
+            //FID2_Y = FID2_Y * 1000;
             // Applying mirroring for KiCAD
-            FID2.pos_y = FID2.pos_y * (-1);
-            FID2.pos_y = FID2.pos_y * 39.3701;
-            //if(Conf->Mirroir == 0) FID2_PCB->pos_y = FID2_PCB->pos_y * (-1);
-            FID2.pos_y = round(FID2.pos_y);
-            printf("FID2.y : %lf\n", FID2.pos_y);
-            FID2_PCB->pos_x = FID2.pos_x;
-            FID2_PCB->pos_y = FID2.pos_y;
-            FID2_LAY->pos_x = FID2.pos_x;
-            FID2_LAY->pos_y = FID2.pos_y;
+            FID2_Y = FID2_Y * (-1);
+            FID2_Y = FID2_Y * 39.3701;
+            //if(Conf->Mirroir == 0) FID2_PCB_Y = FID2_PCB_Y * (-1);
+            FID2_Y = round(FID2_Y);
+            printf("FID2.y : %lf\n", FID2_Y);
+            FID2_PCB_X = FID2_X;
+            FID2_PCB_Y = FID2_Y;
+            FID2_LAY_X = FID2_X;
+            FID2_LAY_Y = FID2_Y;
             FID2Found = 1;
         }
     }
@@ -87,40 +87,40 @@ int ApplyConfigurations(struct CadComponent *comp, struct ConfigFile *Conf, stru
     switch(((int) Conf->Angle)){
     case 90: // (x,y) => (-y,x)
         // FID1
-        Rotation_buf = FID1_LAY->pos_x;
-        FID1_LAY->pos_x = FID1_LAY->pos_y;
-        FID1_LAY->pos_y = Rotation_buf;
-        FID1_LAY->pos_x = FID1_LAY->pos_x * (-1);
+        Rotation_buf = FID1_LAY_X;
+        FID1_LAY_X = FID1_LAY_Y;
+        FID1_LAY_Y = Rotation_buf;
+        FID1_LAY_X = FID1_LAY_X * (-1);
 
         // FID2
-        Rotation_buf = FID2_LAY->pos_x;
-        FID2_LAY->pos_x = FID2_LAY->pos_y;
-        FID2_LAY->pos_y = Rotation_buf;
-        FID2_LAY->pos_x = FID2_LAY->pos_x * (-1);
+        Rotation_buf = FID2_LAY_X;
+        FID2_LAY_X = FID2_LAY_Y;
+        FID2_LAY_Y = Rotation_buf;
+        FID2_LAY_X = FID2_LAY_X * (-1);
 
         break;
     case 180: // (x,y) => (-x,-y)
         // FID1
-        FID1_LAY->pos_x = FID1_LAY->pos_x * (-1);
-        FID1_LAY->pos_y = FID1_LAY->pos_y * (-1);
+        FID1_LAY_X = FID1_LAY_X * (-1);
+        FID1_LAY_Y = FID1_LAY_Y * (-1);
 
         // FID2
-        FID2_LAY->pos_x = FID2_LAY->pos_x * (-1);
-        FID2_LAY->pos_y = FID2_LAY->pos_y * (-1);
+        FID2_LAY_X = FID2_LAY_X * (-1);
+        FID2_LAY_Y = FID2_LAY_Y * (-1);
 
         break;
     case 270: // (x,y) => (y,-x)
         // FID1
-        Rotation_buf = FID1_LAY->pos_x;
-        FID1_LAY->pos_x = FID1_LAY->pos_y;
-        FID1_LAY->pos_y = Rotation_buf;
-        FID1_LAY->pos_y = FID1_LAY->pos_y * (-1);
+        Rotation_buf = FID1_LAY_X;
+        FID1_LAY_X = FID1_LAY_Y;
+        FID1_LAY_Y = Rotation_buf;
+        FID1_LAY_Y = FID1_LAY_Y * (-1);
 
         // FID2
-        Rotation_buf = FID2_LAY->pos_x;
-        FID2_LAY->pos_x = FID2_LAY->pos_y;
-        FID2_LAY->pos_y = Rotation_buf;
-        FID2_LAY->pos_y = FID2_LAY->pos_y * (-1);
+        Rotation_buf = FID2_LAY_X;
+        FID2_LAY_X = FID2_LAY_Y;
+        FID2_LAY_Y = Rotation_buf;
+        FID2_LAY_Y = FID2_LAY_Y * (-1);
 
         break;
     default :
@@ -132,73 +132,73 @@ int ApplyConfigurations(struct CadComponent *comp, struct ConfigFile *Conf, stru
 
     //-------------------------*** Apply shifting and zoom on FID ***----------------------------------//
     // FID1
-    FID1_LAY->pos_x = (FID1_LAY->pos_x + Conf->DecalX) * Conf->Zoom;
-    FID1_LAY->pos_y = (FID1_LAY->pos_y + Conf->DecalY) * Conf->Zoom;
+    FID1_LAY_X = (FID1_LAY_X + Conf->DecalX) * this->ConfigData[Conf_Scale].toDouble();
+    FID1_LAY_Y = (FID1_LAY_Y + Conf->DecalY) * this->ConfigData[Conf_Scale].toDouble();
 
     // FID2
-    FID2_LAY->pos_x = (FID2_LAY->pos_x + Conf->DecalX) * Conf->Zoom;
-    FID2_LAY->pos_y = (FID2_LAY->pos_y + Conf->DecalY) * Conf->Zoom;
+    FID2_LAY_X = (FID2_LAY_X + Conf->DecalX) * this->ConfigData[Conf_Scale].toDouble();
+    FID2_LAY_Y = (FID2_LAY_Y + Conf->DecalY) * this->ConfigData[Conf_Scale].toDouble();
     //-------------------------------------------------------------------------------------------------//
 
     for(int i = 0; i < *KiCADNumberOfLines; i++){
 
         //-----------------*** Converting strings to double to apply configurations ***--------------------//
-        comp_buf[i].PosX = strtod(comp[i].LocationX, NULL);
-        comp_buf[i].PosY = strtod(comp[i].LocationY, NULL);
-        comp_buf[i].Rot = strtod(comp[i].Rotation, NULL);
+        Comp_buf[i][PosX_buf] = strtod(comp[i].LocationX, NULL);
+        Comp_buf[i][PosY_buf] = strtod(comp[i].LocationY, NULL);
+        Comp_buf[i][Rot_buf] = strtod(comp[i].Rotation, NULL);
         //-------------------------------------------------------------------------------------------------//
 
         //-----------------------*** Converting the values from Inch to Mils ***---------------------------//
-        //comp_buf[i].PosX = comp_buf[i].PosX * 1000;
-        //comp_buf[i].PosY = comp_buf[i].PosY * 1000;
+        //Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] * 1000;
+        //Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * 1000;
         //-------------------------------------------------------------------------------------------------//
 
         //-----------------------*** Converting the values from mm to mils ***-----------------------------//
-        comp_buf[i].PosX = comp_buf[i].PosX * 39.3701;
-        comp_buf[i].PosY = comp_buf[i].PosY * 39.3701;
+        Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] * 39.3701;
+        Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * 39.3701;
         //-------------------------------------------------------------------------------------------------//
 
         //--------------------*** Adapting the KiCAD Values to match the PNP ones ***----------------------//
-        comp_buf[i].PosX = comp_buf[i].PosX + 125;
-        comp_buf[i].PosY = comp_buf[i].PosY + 7725;
-        //comp_buf[i].PosY = comp_buf[i].PosY * (-1);
+        Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] + 125;
+        Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] + 7725;
+        //Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * (-1);
         //-------------------------------------------------------------------------------------------------//
 
         //------------------------*** Adjusting the rotation of components ***-----------------------------//
-        if(comp_buf[i].Rot < 0) comp_buf[i].Rot = comp_buf[i].Rot + 360;
+        if(Comp_buf[i][Rot_buf] < 0) Comp_buf[i][Rot_buf] = Comp_buf[i][Rot_buf] + 360;
         //-------------------------------------------------------------------------------------------------//
 
 
         //-----------------------*** Apply shifting and zoom on components ***-----------------------------//
-        comp_buf[i].PosX = (comp_buf[i].PosX - FID1_PCB->pos_x) * Conf->Zoom;
-        comp_buf[i].PosY = (comp_buf[i].PosY - FID1_PCB->pos_y) * Conf->Zoom;
+        Comp_buf[i][PosX_buf] = (Comp_buf[i][PosX_buf] - FID1_PCB_X) * this->ConfigData[Conf_Scale].toDouble();
+        Comp_buf[i][PosY_buf] = (Comp_buf[i][PosY_buf] - FID1_PCB_Y) * this->ConfigData[Conf_Scale].toDouble();
         //-------------------------------------------------------------------------------------------------//
 
         //---------------------------*** Apply mirroring on components ***---------------------------------//
-        if(Conf->Mirroir == 1) comp_buf[i].PosY = comp_buf[i].PosY * (-1);
+        if(Conf->Mirroir == 1) Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * (-1);
         //-------------------------------------------------------------------------------------------------//
 
         //---------------------------*** Apply Rotation on Components ***----------------------------------//
-        comp_buf[i].Rot = comp_buf[i].Rot - 90; // since all components are loaded in 90 deg to the machine
+        Comp_buf[i][Rot_buf] = Comp_buf[i][Rot_buf] - 90; // since all components are loaded in 90 deg to the machine
 
         switch(((int) Conf->Angle)){
         case 90: // (x,y) => (-y,x)
-            Rotation_buf = comp_buf[i].PosX;
-            comp_buf[i].PosX = comp_buf[i].PosY;
-            comp_buf[i].PosY = Rotation_buf;
-            comp_buf[i].PosX = comp_buf[i].PosX * (-1);
+            Rotation_buf = Comp_buf[i][PosX_buf];
+            Comp_buf[i][PosX_buf] = Comp_buf[i][PosY_buf];
+            Comp_buf[i][PosY_buf] = Rotation_buf;
+            Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] * (-1);
 
             break;
         case 180: // (x,y) => (-x,-y)
-            comp_buf[i].PosX = comp_buf[i].PosX * (-1);
-            comp_buf[i].PosY = comp_buf[i].PosY * (-1);
+            Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] * (-1);
+            Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * (-1);
 
             break;
         case 270: // (x,y) => (y,-x)
-            Rotation_buf = comp_buf[i].PosX;
-            comp_buf[i].PosX = comp_buf[i].PosY;
-            comp_buf[i].PosY = Rotation_buf;
-            comp_buf[i].PosY = comp_buf[i].PosY * (-1);
+            Rotation_buf = Comp_buf[i][PosX_buf];
+            Comp_buf[i][PosX_buf] = Comp_buf[i][PosY_buf];
+            Comp_buf[i][PosY_buf] = Rotation_buf;
+            Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * (-1);
 
             break;
         default :
@@ -208,18 +208,18 @@ int ApplyConfigurations(struct CadComponent *comp, struct ConfigFile *Conf, stru
         //-------------------------------------------------------------------------------------------------//
 
         //---------------------*** Adapting the component values to the MYDATA ***-------------------------//
-        comp_buf[i].PosX = round(comp_buf[i].PosX);
-        comp_buf[i].PosY = round(comp_buf[i].PosY);
-        comp_buf[i].Rot = comp_buf[i].Rot * 1000;
+        Comp_buf[i][PosX_buf] = round(Comp_buf[i][PosX_buf]);
+        Comp_buf[i][PosY_buf] = round(Comp_buf[i][PosY_buf]);
+        Comp_buf[i][Rot_buf] = Comp_buf[i][Rot_buf] * 1000;
         //-------------------------------------------------------------------------------------------------//
 
         //---------------*** Converting the values to string for writing in the file ***-------------------//
-        snprintf(comp[i].LocationX, 2*sizeof(comp_buf[i].PosX), "%d", (int) comp_buf[i].PosX);
-        //printf("LocationX : %s ; PosX : %lf\n", comp[i].LocationX, comp_buf[i].PosX);
-        snprintf(comp[i].LocationY, 2*sizeof(comp_buf[i].PosY), "%d", (int) comp_buf[i].PosY);
-        //printf("LocationY : %s ; PosY : %lf\n", comp[i].LocationY, comp_buf[i].PosY);
-        snprintf(comp[i].Rotation, 2*sizeof(comp_buf[i].Rot), "%d", (int) comp_buf[i].Rot);
-        //printf("Rotation : %s ; Rot : %lf\n", comp[i].Rotation, comp_buf[i].Rot);
+        snprintf(comp[i].LocationX, 2*sizeof(Comp_buf[i][PosX_buf]), "%d", (int) Comp_buf[i][PosX_buf]);
+        //printf("LocationX : %s ; PosX : %lf\n", comp[i].LocationX, Comp_buf[i][PosX_buf]);
+        snprintf(comp[i].LocationY, 2*sizeof(Comp_buf[i][PosY_buf]), "%d", (int) Comp_buf[i][PosY_buf]);
+        //printf("LocationY : %s ; PosY : %lf\n", comp[i].LocationY, Comp_buf[i][PosY_buf]);
+        snprintf(comp[i].Rotation, 2*sizeof(Comp_buf[i][Rot_buf]), "%d", (int) Comp_buf[i][Rot_buf]);
+        //printf("Rotation : %s ; Rot : %lf\n", comp[i].Rotation, Comp_buf[i][Rot_buf]);
         //-------------------------------------------------------------------------------------------------//
 
     }
@@ -238,25 +238,201 @@ CadData::CadData(QObject *parent)
 
 }
 
+void CadData::ApplyConfigurations()
+{
+    double Rotation_buf;
+    double Comp_buf[this->KiCADNumberOfComponents][3];
+    qInfo() << this->ConfigData[Conf_Rot].toInt();
+    //--------------------------------*** Apply Rotation on FID_LAY ***------------------------------------//
+    switch(this->ConfigData[Conf_Rot].toInt()){
+    case 90: // (x,y) => (-y,x)
+        // FID1
+        Rotation_buf = FID1_LAY_X;
+        FID1_LAY_X = FID1_LAY_Y;
+        FID1_LAY_Y = Rotation_buf;
+        FID1_LAY_X = FID1_LAY_X * (-1);
+
+        // FID2
+        Rotation_buf = FID2_LAY_X;
+        FID2_LAY_X = FID2_LAY_Y;
+        FID2_LAY_Y = Rotation_buf;
+        FID2_LAY_X = FID2_LAY_X * (-1);
+
+        break;
+    case 180: // (x,y) => (-x,-y)
+        // FID1
+        FID1_LAY_X = FID1_LAY_X * (-1);
+        FID1_LAY_Y = FID1_LAY_Y * (-1);
+
+        // FID2
+        FID2_LAY_X = FID2_LAY_X * (-1);
+        FID2_LAY_Y = FID2_LAY_Y * (-1);
+
+        break;
+    case 270: // (x,y) => (y,-x)
+        // FID1
+        Rotation_buf = FID1_LAY_X;
+        FID1_LAY_X = FID1_LAY_Y;
+        FID1_LAY_Y = Rotation_buf;
+        FID1_LAY_Y = FID1_LAY_Y * (-1);
+
+        // FID2
+        Rotation_buf = FID2_LAY_X;
+        FID2_LAY_X = FID2_LAY_Y;
+        FID2_LAY_Y = Rotation_buf;
+        FID2_LAY_Y = FID2_LAY_Y * (-1);
+
+        break;
+    default :
+        break;
+
+    }
+
+    //-------------------------------------------------------------------------------------------------//
+
+    //-------------------------*** Apply shifting and zoom on FID ***----------------------------------//
+    // FID1
+    FID1_LAY_X = (FID1_LAY_X + this->ConfigData[Conf_OffsetX].toDouble()) * this->ConfigData[Conf_Scale].toDouble();
+    FID1_LAY_Y = (FID1_LAY_Y + this->ConfigData[Conf_OffsetY].toDouble()) * this->ConfigData[Conf_Scale].toDouble();
+
+    // FID2
+    FID2_LAY_X = (FID2_LAY_X + this->ConfigData[Conf_OffsetX].toDouble()) * this->ConfigData[Conf_Scale].toDouble();
+    FID2_LAY_Y = (FID2_LAY_Y + this->ConfigData[Conf_OffsetY].toDouble()) * this->ConfigData[Conf_Scale].toDouble();
+    //-------------------------------------------------------------------------------------------------//
+
+    for(int i = 0; i < this->KiCADNumberOfComponents; i++){
+
+        //-----------------*** Converting strings to double to apply configurations ***--------------------//
+        Comp_buf[i][PosX_buf] = this->KiCADData[i][PosX].toDouble();
+        Comp_buf[i][PosY_buf] = this->KiCADData[i][PosY].toDouble();
+        Comp_buf[i][Rot_buf] = this->KiCADData[i][Rot].toDouble();
+        //-------------------------------------------------------------------------------------------------//
+
+        //-----------------------*** Converting the values from Inch to Mils ***---------------------------//
+        //Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] * 1000;
+        //Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * 1000;
+        //-------------------------------------------------------------------------------------------------//
+
+        //-----------------------*** Converting the values from mm to mils ***-----------------------------//
+        Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] * 39.3701;
+        Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * 39.3701;
+        //-------------------------------------------------------------------------------------------------//
+
+        //--------------------*** Adapting the KiCAD Values to match the PNP ones ***----------------------//
+        Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] + 125;
+        Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] + 7725;
+        //Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * (-1);
+        //-------------------------------------------------------------------------------------------------//
+
+        //------------------------*** Adjusting the rotation of components ***-----------------------------//
+        if(Comp_buf[i][Rot_buf] < 0) Comp_buf[i][Rot_buf] = Comp_buf[i][Rot_buf] + 360;
+        //-------------------------------------------------------------------------------------------------//
+
+
+        //-----------------------*** Apply shifting and zoom on components ***-----------------------------//
+        Comp_buf[i][PosX_buf] = (Comp_buf[i][PosX_buf] - FID1_PCB_X) * this->ConfigData[Conf_Scale].toDouble();
+        Comp_buf[i][PosY_buf] = (Comp_buf[i][PosY_buf] - FID1_PCB_Y) * this->ConfigData[Conf_Scale].toDouble();
+        //-------------------------------------------------------------------------------------------------//
+
+        //---------------------------*** Apply mirroring on components ***---------------------------------//
+        if(this->ConfigData[Conf_Mirror].toInt() == 1) Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * (-1);
+        //-------------------------------------------------------------------------------------------------//
+
+        //---------------------------*** Apply Rotation on Components ***----------------------------------//
+        Comp_buf[i][Rot_buf] = Comp_buf[i][Rot_buf] - 90; // since all components are loaded in 90 deg to the machine
+
+        switch(this->ConfigData[Conf_Rot].toInt()){
+        case 90: // (x,y) => (-y,x)
+            Rotation_buf = Comp_buf[i][PosX_buf];
+            Comp_buf[i][PosX_buf] = Comp_buf[i][PosY_buf];
+            Comp_buf[i][PosY_buf] = Rotation_buf;
+            Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] * (-1);
+
+            break;
+        case 180: // (x,y) => (-x,-y)
+            Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] * (-1);
+            Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * (-1);
+
+            break;
+        case 270: // (x,y) => (y,-x)
+            Rotation_buf = Comp_buf[i][PosX_buf];
+            Comp_buf[i][PosX_buf] = Comp_buf[i][PosY_buf];
+            Comp_buf[i][PosY_buf] = Rotation_buf;
+            Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * (-1);
+
+            break;
+        default :
+            break;
+
+        }
+        //-------------------------------------------------------------------------------------------------//
+
+        //---------------------*** Adapting the component values to the MYDATA ***-------------------------//
+        //Comp_buf[i][PosX_buf] = round(Comp_buf[i][PosX_buf]);
+        //Comp_buf[i][PosY_buf] = round(Comp_buf[i][PosY_buf]);
+        Comp_buf[i][Rot_buf] = Comp_buf[i][Rot_buf] * 1000;
+        //-------------------------------------------------------------------------------------------------//
+
+        //---------------*** Converting the values to string for writing in the file ***-------------------//
+        this->KiCADData[i][PosX] = QString("%1").arg(Comp_buf[i][PosX_buf],0,'f',6);
+        this->KiCADData[i][PosY] = QString("%1").arg(Comp_buf[i][PosY_buf],0,'f',6);
+        this->KiCADData[i][Rot] = QString("%1").arg(Comp_buf[i][Rot_buf],0,'f',6);
+        qInfo() << "Converting the values to string for writing in the file" << "\n";
+        qInfo() << "Double : " << Comp_buf[i][PosX_buf] << " QString : " << this->KiCADData[i][PosX];
+        qInfo() << "Double : " << Comp_buf[i][PosY_buf] << " QString : " << this->KiCADData[i][PosY];
+        qInfo() << "Double : " << Comp_buf[i][Rot_buf] << " QString : " << this->KiCADData[i][Rot];
+        //-------------------------------------------------------------------------------------------------//
+
+    }
+
+}
+
 void CadData::FindFiducials(QStringList _KiCADData)
 {
     if(_KiCADData[0].contains("FID1")){
         FID1_X = _KiCADData[PosX].toDouble();
         FID1_Y = _KiCADData[PosY].toDouble();
+        FID1_X = FID1_X * 39.3701;
+        //FID1_X = round(FID1_X);
+        // Applying mirroring for KiCAD
+        FID1_Y = FID1_Y * (-1);
+        FID1_Y = FID1_Y * 39.3701;
+        //FID1_Y = round(FID1_Y);
+        FID1_PCB_X = FID1_X;
+        FID1_PCB_Y = FID1_Y;
+        FID1_LAY_X = FID1_X;
+        FID1_LAY_Y = FID1_Y;
         //qInfo() << "FID1 => " <<"PosX : " << FID1_X << "PosY : " << FID1_Y;
 
     }
     if(_KiCADData[0].contains("FID2")){
         FID2_X = _KiCADData[PosX].toDouble();
         FID2_Y = _KiCADData[PosY].toDouble();
+        // Inch to Mils
+        //FID2_X = FID2_X * 1000;
+        FID2_X = FID2_X * 39.3701;
+        //FID2_X = round(FID2_X);
+        // Inch to Mils
+        //FID2_Y = FID2_Y * 1000;
+        // Applying mirroring for KiCAD
+        FID2_Y = FID2_Y * (-1);
+        FID2_Y = FID2_Y * 39.3701;
+        //if(Conf->Mirroir == 0) FID2_PCB_Y = FID2_PCB_Y * (-1);
+        //FID2_Y = round(FID2_Y);
+        FID2_PCB_X = FID2_X;
+        FID2_PCB_Y = FID2_Y;
+        FID2_LAY_X = FID2_X;
+        FID2_LAY_Y = FID2_Y;
         //qInfo() << "FID2 => " <<"PosX : " << FID2_X << "PosY : " << FID2_Y;
     }
+
 }
+
 
 void CadData::getCadConfigData(QString _ConfigData)
 {
     this->ConfigData << _ConfigData;
-    //qInfo() << "CAD : " << ConfigData;
+    qInfo() << "CAD : " << ConfigData;
 }
 
 void CadData::getLibData(QList<QStringList> _LibData, int _LibFileNumberOfLines)
@@ -274,6 +450,7 @@ void CadData::getLibData(QList<QStringList> _LibData, int _LibFileNumberOfLines)
             }
         }
     }
+    ApplyConfigurations();
 }
 
 void CadData::getKiCADData(QList<QStringList> _KiCADData, int _KiCADNumberOfComponents)
@@ -281,9 +458,10 @@ void CadData::getKiCADData(QList<QStringList> _KiCADData, int _KiCADNumberOfComp
     this->KiCADData = _KiCADData;
     this->KiCADNumberOfComponents = _KiCADNumberOfComponents;
     //qInfo() << this->KiCADData.size();
-    for (int i = 0; i < _KiCADNumberOfComponents; ++i) {
+    for (int i = 0; i < _KiCADNumberOfComponents; i++) {
         FindFiducials(_KiCADData[i]);
     }
+
 }
 
 void CadData::getKiCADNumberOfLines(int _KiCADNumberOfLines)
