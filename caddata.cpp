@@ -241,6 +241,7 @@ CadData::CadData(QObject *parent)
 void CadData::ApplyConfigurations()
 {
     double Rotation_buf;
+    QList<QStringList> KiCADData_buf;
     double Comp_buf[this->KiCADNumberOfComponents][3];
     qInfo() << this->ConfigData[Conf_Rot].toInt();
     //--------------------------------*** Apply Rotation on FID_LAY ***------------------------------------//
@@ -300,12 +301,21 @@ void CadData::ApplyConfigurations()
     FID2_LAY_Y = (FID2_LAY_Y + this->ConfigData[Conf_OffsetY].toDouble()) * this->ConfigData[Conf_Scale].toDouble();
     //-------------------------------------------------------------------------------------------------//
 
+    KiCADData_buf = this->KiCADData;
+    for (int i = 0; i < KiCADData_buf.size(); ++i) {
+        KiCADData_buf[i].removeAt(Ref);
+        KiCADData_buf[i].removeAt(Val-1);
+        KiCADData_buf[i].removeAt(Package-2);
+        KiCADData_buf[i].removeAt(Side-3);
+    }
+    //qInfo() << KiCADData_buf;
+
     for(int i = 0; i < this->KiCADNumberOfComponents; i++){
 
         //-----------------*** Converting strings to double to apply configurations ***--------------------//
-        Comp_buf[i][PosX_buf] = this->KiCADData[i][PosX].toDouble();
-        Comp_buf[i][PosY_buf] = this->KiCADData[i][PosY].toDouble();
-        Comp_buf[i][Rot_buf] = this->KiCADData[i][Rot].toDouble();
+        Comp_buf[i][PosX_buf] = KiCADData_buf[i][PosX_buf].toDouble();
+        Comp_buf[i][PosY_buf] = KiCADData_buf[i][PosY_buf].toDouble();
+        Comp_buf[i][Rot_buf] = KiCADData_buf[i][Rot_buf].toDouble();
         //-------------------------------------------------------------------------------------------------//
 
         //-----------------------*** Converting the values from Inch to Mils ***---------------------------//
@@ -368,8 +378,8 @@ void CadData::ApplyConfigurations()
         //-------------------------------------------------------------------------------------------------//
 
         //---------------------*** Adapting the component values to the MYDATA ***-------------------------//
-        //Comp_buf[i][PosX_buf] = round(Comp_buf[i][PosX_buf]);
-        //Comp_buf[i][PosY_buf] = round(Comp_buf[i][PosY_buf]);
+        Comp_buf[i][PosX_buf] = round(Comp_buf[i][PosX_buf]);
+        Comp_buf[i][PosY_buf] = round(Comp_buf[i][PosY_buf]);
         Comp_buf[i][Rot_buf] = Comp_buf[i][Rot_buf] * 1000;
         //-------------------------------------------------------------------------------------------------//
 
@@ -393,11 +403,11 @@ void CadData::FindFiducials(QStringList _KiCADData)
         FID1_X = _KiCADData[PosX].toDouble();
         FID1_Y = _KiCADData[PosY].toDouble();
         FID1_X = FID1_X * 39.3701;
-        //FID1_X = round(FID1_X);
+        FID1_X = round(FID1_X);
         // Applying mirroring for KiCAD
         FID1_Y = FID1_Y * (-1);
         FID1_Y = FID1_Y * 39.3701;
-        //FID1_Y = round(FID1_Y);
+        FID1_Y = round(FID1_Y);
         FID1_PCB_X = FID1_X;
         FID1_PCB_Y = FID1_Y;
         FID1_LAY_X = FID1_X;
@@ -411,14 +421,14 @@ void CadData::FindFiducials(QStringList _KiCADData)
         // Inch to Mils
         //FID2_X = FID2_X * 1000;
         FID2_X = FID2_X * 39.3701;
-        //FID2_X = round(FID2_X);
+        FID2_X = round(FID2_X);
         // Inch to Mils
         //FID2_Y = FID2_Y * 1000;
         // Applying mirroring for KiCAD
         FID2_Y = FID2_Y * (-1);
         FID2_Y = FID2_Y * 39.3701;
         //if(Conf->Mirroir == 0) FID2_PCB_Y = FID2_PCB_Y * (-1);
-        //FID2_Y = round(FID2_Y);
+        FID2_Y = round(FID2_Y);
         FID2_PCB_X = FID2_X;
         FID2_PCB_Y = FID2_Y;
         FID2_LAY_X = FID2_X;

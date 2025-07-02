@@ -103,6 +103,7 @@ Window {
             onAccepted: {
                 fileDialog.OpenFile
                 KiCADFile.getFilePathUrl(selectedFile);
+                R_Conf.readingMydataConfigFile();
                 LibFile.readingMydataLibFile();
             }
         }

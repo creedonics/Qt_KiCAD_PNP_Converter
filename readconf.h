@@ -14,7 +14,7 @@ class ReadConf : public QObject
     Q_OBJECT
 public:
     explicit ReadConf(QObject *parent = nullptr);
-    void ReadingMydataConfigFile(QString _FilePath);
+    void readingMydataConfigFile(QString _FilePath);
     QString FilePath;
 
 signals:
@@ -22,6 +22,7 @@ signals:
 
 public slots :
     void getFilePathUrl(QUrl _FilePathUrl);
+    void readingMydataConfigFile();
 };
 
 #endif // READCONF_H

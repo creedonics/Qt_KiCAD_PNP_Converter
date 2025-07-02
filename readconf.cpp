@@ -73,7 +73,7 @@ ReadConf::ReadConf(QObject *parent)
     : QObject{parent}
 {}
 
-void ReadConf::ReadingMydataConfigFile(QString _FilePath)
+void ReadConf::readingMydataConfigFile(QString _FilePath)
 {
     QFile file(_FilePath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -95,6 +95,25 @@ void ReadConf::ReadingMydataConfigFile(QString _FilePath)
 void ReadConf::getFilePathUrl(QUrl _FilePathUrl)
 {
     this->FilePath = _FilePathUrl.toLocalFile();
-    ReadingMydataConfigFile(this->FilePath);
+    readingMydataConfigFile(this->FilePath);
 
+}
+
+void ReadConf::readingMydataConfigFile()
+{
+    QFile file("MydataConfigFile.ini");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    QTextStream in(&file);
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        //QString testing;
+        int i;
+        if(line.indexOf("=") != -1) {
+            i = line.indexOf("=");
+            qInfo() << line.sliced(i + 2);
+            emit sendCadConfigData(line.sliced(i + 2));
+        }
+    }
 }
