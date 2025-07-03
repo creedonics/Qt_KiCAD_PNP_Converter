@@ -67,7 +67,7 @@ WritePcb::WritePcb(QObject *parent)
 
 void WritePcb::WritingMyDataPcbFile()
 {
-    QFile file("MydataPcbFile.lay");
+    QFile file("MydataPcbFile.pcb");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
 
@@ -80,9 +80,10 @@ void WritePcb::WritingMyDataPcbFile()
     out << "F5 10 20" << "\n";
     out << "F6 10 -20" << "\n";
     out << "F7 10 40" << "\n";
-    // for (int i = 0; i < total; ++i) {
-    //     out << "F8 " <<  <<  <<  <<  <<  <<  <<  << "\n";
-    // }
+
+    for (int i = 0; i < this->KiCADData.size(); i++) {
+        out << QString("F8 %1 %2 %3 %4 %5 %6 %7").arg(this->KiCADData[i][PosX].toInt()).arg(this->KiCADData[i][PosY].toInt()).arg(this->KiCADData[i][Rot].toInt()).arg(this->UsedLibData[i][prioritée]).arg(this->UsedLibData[i][montage]).arg(this->UsedLibData[i][colle]).arg(this->UsedLibData[i][nomMYDATA]) << "\n";
+    }
 }
 
 void WritePcb::getPcbData(int _FID1_PCB_X, int _FID2_PCB_X, double _ConfigData_Scale, QList<QStringList> _KiCADData, QList<QStringList> _UsedLibData)
@@ -90,6 +91,13 @@ void WritePcb::getPcbData(int _FID1_PCB_X, int _FID2_PCB_X, double _ConfigData_S
     this->FID1_PCB_X = _FID1_PCB_X;
     this->FID2_PCB_X = _FID2_PCB_X;
     this->ConfigData_Scale = _ConfigData_Scale;
+    for (int i = 0; i < _KiCADData.size(); i++) {
+        if( _KiCADData[i][Ref] == "FID1" || _KiCADData[i][Ref] == "FID2" ) {
+            _KiCADData.removeAt(i);
+            i--;
+            //qInfo() << _KiCADData;
+        }
+    }
     this->KiCADData = _KiCADData;
     this->UsedLibData = _UsedLibData;
     WritingMyDataPcbFile();

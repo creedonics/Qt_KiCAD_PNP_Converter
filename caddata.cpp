@@ -384,18 +384,19 @@ void CadData::ApplyConfigurations()
         //-------------------------------------------------------------------------------------------------//
 
         //---------------*** Converting the values to string for writing in the file ***-------------------//
-        this->KiCADData[i][PosX] = QString("%1").arg(Comp_buf[i][PosX_buf],0,'f',6);
-        this->KiCADData[i][PosY] = QString("%1").arg(Comp_buf[i][PosY_buf],0,'f',6);
-        this->KiCADData[i][Rot] = QString("%1").arg(Comp_buf[i][Rot_buf],0,'f',6);
-        qInfo() << "Converting the values to string for writing in the file" << "\n";
-        qInfo() << "Double : " << Comp_buf[i][PosX_buf] << " QString : " << this->KiCADData[i][PosX];
-        qInfo() << "Double : " << Comp_buf[i][PosY_buf] << " QString : " << this->KiCADData[i][PosY];
-        qInfo() << "Double : " << Comp_buf[i][Rot_buf] << " QString : " << this->KiCADData[i][Rot];
+        this->KiCADData[i][PosX] = QString("%1").arg((int) Comp_buf[i][PosX_buf]);
+        this->KiCADData[i][PosY] = QString("%1").arg((int) Comp_buf[i][PosY_buf]);
+        this->KiCADData[i][Rot] = QString("%1").arg((int) Comp_buf[i][Rot_buf]);
+        // qInfo() << "Converting the values to string for writing in the file" << "\n";
+        // qInfo() << "Double : " << Comp_buf[i][PosX_buf] << " QString : " << this->KiCADData[i][PosX];
+        // qInfo() << "Double : " << Comp_buf[i][PosY_buf] << " QString : " << this->KiCADData[i][PosY];
+        // qInfo() << "Double : " << Comp_buf[i][Rot_buf] << " QString : " << this->KiCADData[i][Rot];
         //-------------------------------------------------------------------------------------------------//
 
     }
 
     emit sendLayData((int) this->FID1_LAY_X, (int) this->FID1_LAY_Y, (int) this->FID2_LAY_X, (int) this->FID2_LAY_Y);
+    emit sendPcbData(this->FID1_PCB_X, this->FID2_PCB_X, this->ConfigData[Conf_Scale].toDouble(), this->KiCADData, this->UsedLibData);
 }
 
 void CadData::FindFiducials(QStringList _KiCADData)
@@ -478,7 +479,7 @@ void CadData::getKiCADData(QList<QStringList> _KiCADData, int _KiCADNumberOfComp
 void CadData::getKiCADNumberOfLines(int _KiCADNumberOfLines)
 {
     this->KiCADNumberOfLines = _KiCADNumberOfLines;
-    qInfo() << " KiCAD Number of Lines : " << this->KiCADNumberOfLines;
+    //qInfo() << " KiCAD Number of Lines : " << this->KiCADNumberOfLines;
 }
 
 
