@@ -82,7 +82,7 @@ void WritePcb::WritingMyDataPcbFile()
     out << "F7 10 40" << "\n";
 
     for (int i = 0; i < this->KiCADData.size(); i++) {
-        out << QString("F8 %1 %2 %3 %4 %5 %6 %7").arg(this->KiCADData[i][PosX].toInt()).arg(this->KiCADData[i][PosY].toInt()).arg(this->KiCADData[i][Rot].toInt()).arg(this->UsedLibData[i][prioritée]).arg(this->UsedLibData[i][montage]).arg(this->UsedLibData[i][colle]).arg(this->UsedLibData[i][nomMYDATA]) << "\n";
+        out << QString("F8 %1 %2 %3 %4 %5 %6 %7").arg(this->KiCADData[i][PosX]).arg(this->KiCADData[i][PosY]).arg(this->KiCADData[i][Rot]).arg(this->UsedLibData[i][prioritée]).arg(this->UsedLibData[i][montage]).arg(this->UsedLibData[i][colle]).arg(this->UsedLibData[i][nomMYDATA]) << "\n";
     }
 }
 
