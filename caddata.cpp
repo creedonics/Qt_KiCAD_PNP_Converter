@@ -395,6 +395,7 @@ void CadData::ApplyConfigurations()
 
     }
 
+    emit sendLayData((int) this->FID1_LAY_X, (int) this->FID1_LAY_Y, (int) this->FID2_LAY_X, (int) this->FID2_LAY_Y);
 }
 
 void CadData::FindFiducials(QStringList _KiCADData)

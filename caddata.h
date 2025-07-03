@@ -60,6 +60,8 @@ public:
     void ApplyConfigurations();
 
 signals:
+    void sendLayData(int _FID1_LAY_X, int _FID1_LAY_Y, int _FID2_LAY_X, int _FID2_LAY_Y);
+    void sendPcbData(int _FID1_PCB_X, int _FID2_PCB_X, double _ConfigData_Scale, QList<QStringList> _KiCADData, QList<QStringList> _UsedLibData);
 
 public slots:
     void getCadConfigData(QString _ConfigData);

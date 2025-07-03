@@ -6,6 +6,8 @@
 #include "caddata.h"
 #include "readkicadfile.h"
 #include "readlibfile.h"
+#include "writelay.h"
+#include "writepcb.h"
 
 
 
@@ -18,12 +20,16 @@ int main(int argc, char *argv[])
     CadData CadDataElem;
     ReadKiCADFile KiCADFile;
     ReadLibFile LibFile;
+    WriteLay W_Lay;
+    WritePcb W_Pcb;
 
 
     QObject::connect(&R_Conf, &ReadConf::sendCadConfigData, &CadDataElem, &CadData::getCadConfigData);
     QObject::connect(&KiCADFile, &ReadKiCADFile::sendKiCADNumberOfLines, &CadDataElem, &CadData::getKiCADNumberOfLines);
     QObject::connect(&KiCADFile, &ReadKiCADFile::sendKiCADData, &CadDataElem, &CadData::getKiCADData);
     QObject::connect(&LibFile, &ReadLibFile::sendLibData, &CadDataElem, &CadData::getLibData);
+    QObject::connect(&CadDataElem, &CadData::sendLayData, &W_Lay, &WriteLay::getLayData);
+    QObject::connect(&CadDataElem, &CadData::sendPcbData, &W_Pcb, &WritePcb::getPcbData);
 
 
     QQmlContext *KiCADFile_context = engine.rootContext();

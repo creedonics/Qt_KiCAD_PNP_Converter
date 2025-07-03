@@ -55,8 +55,8 @@ Window {
             width: cadFileDropArea.width + 5
             height: cadFileDropArea.height + 5
             color: "#00000000"
-            border.color: "#c30d1263"
-            border.width: 1
+            //border.color: "#c30d1263"
+            //border.width: 1
             radius: 10.0
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             DropArea {
@@ -65,6 +65,12 @@ Window {
                 height: 200
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
+                onDropped: {
+                    parent.border.color = "#c30d1263"
+                    parent.border.width = 1
+                    console.log(drop.text)
+                }
+
                 //Layout.preferredHeight: 200
                 //Layout.preferredWidth: 200
                 Image {
@@ -78,6 +84,17 @@ Window {
                     sourceSize.width: 200
                 }
             }
+            // MouseArea {
+            //     id: mouseAreaBorder
+            //     anchors.fill: parent
+            //     hoverEnabled: true
+            //     onEntered: {
+            //         parent.border.color = "#c30d1263"
+            //         parent.border.width = 1
+
+            //     }
+            //     onExited: parent.border.color = "#00000000"
+            // }
         }
 
 
