@@ -6,10 +6,11 @@ import QtQuick.Dialogs
 
 Window {
     id: configWindow
-    width: 1280
-    height: 720
+    //width: 1280
+    //height: 720
     visible: true
     color: "#ffffff"
+    visibility: "Maximized"
     minimumHeight: 720
     minimumWidth: 1280
     flags: Qt.SubWindow
