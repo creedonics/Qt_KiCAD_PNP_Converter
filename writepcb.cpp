@@ -72,17 +72,17 @@ void WritePcb::WritingMyDataPcbFile()
         return;
 
     QTextStream out(&file);
-    out << "F1 " << "CadProjectName" << "\n";
-    out << "F2 " << "DATE" << "\n";
-    out << "F3 0 0" << "\n";
-    out << "F3 " << (this->FID2_PCB_X - this->FID1_PCB_X) * this->ConfigData_Scale << "\n";
-    out << "F4 0 0" << "\n";
-    out << "F5 10 20" << "\n";
-    out << "F6 10 -20" << "\n";
-    out << "F7 10 40" << "\n";
+    out << "F1 " << "CadProjectName" << "\r\n";
+    out << "F2 " << "DATE" << "\r\n";
+    out << "F3 0 0" << "\r\n";
+    out << "F3 " << (this->FID2_PCB_X - this->FID1_PCB_X) * this->ConfigData_Scale << " 0" << "\r\n";
+    out << "F4 0 0" << "\r\n";
+    out << "F5 10 20" << "\r\n";
+    out << "F6 10 -20" << "\r\n";
+    out << "F7 10 40" << "\r\n";
 
     for (int i = 0; i < this->KiCADData.size(); i++) {
-        out << QString("F8 %1 %2 %3 %4 %5 %6 %7").arg(this->KiCADData[i][PosX]).arg(this->KiCADData[i][PosY]).arg(this->KiCADData[i][Rot]).arg(this->UsedLibData[i][prioritée]).arg(this->UsedLibData[i][montage]).arg(this->UsedLibData[i][colle]).arg(this->UsedLibData[i][nomMYDATA]) << "\n";
+        out << QString("F8 %1 %2 %3 %4 %5 %6 %7").arg(this->KiCADData[i][PosX]).arg(this->KiCADData[i][PosY]).arg(this->KiCADData[i][Rot]).arg(this->UsedLibData[i][prioritée]).arg(this->UsedLibData[i][montage]).arg(this->UsedLibData[i][colle]).arg(this->UsedLibData[i][nomMYDATA]) << "\r\n";
     }
 }
 

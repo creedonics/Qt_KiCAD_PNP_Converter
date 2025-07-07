@@ -394,7 +394,7 @@ Window {
             id: validationButton
             width: 200
             height: 50
-            text: qsTr("Validate")
+            text: qsTr("Create a configuration file")
             //Layout.columnSpan: 2
             //Layout.rowSpan: 1
             Layout.preferredWidth: -1

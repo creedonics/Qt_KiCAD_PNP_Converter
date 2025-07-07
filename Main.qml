@@ -26,6 +26,18 @@ Window {
 
     }*/
 
+    Image {
+        id: loremeImage
+        //width: 200
+        //height: 200
+        z: -1
+        source: "qrc:///src/Loreme.jpg"
+        //anchors.centerIn: parent
+        fillMode: Image.PreserveAspectFit
+        sourceSize.height: 200
+        sourceSize.width: 200
+    }
+
     GridLayout {
         id: gridLayout
         anchors.fill: parent
@@ -39,24 +51,57 @@ Window {
         uniformCellWidths: true
         uniformCellHeights: true
 
-
-        Button {
-            id: fileDialogButton
-            width: 200
-            height: 50
+        ColumnLayout {
+            id: fileSelection
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            text: qsTr("Choose a File")
-            highlighted: true
-            onClicked: fileDialog.open()
+            //width: 200
+            //height: 50
+
+            Text {
+                id: fileDialogNote
+                //width: 100
+                //height: 500
+                text: qsTr("Select a KiCAD .pos file or a P-CAD .pnp file to generate the MYDATA manufacturig files")
+                wrapMode: Text.Wrap
+                Layout.maximumWidth: 700
+                maximumLineCount: 3
+                font.pointSize: 22
+                font.family: "Arial"
+                font.bold: true
+            }
+
+            Button {
+                id: fileDialogButton
+                //width: 200
+                //height: 50
+
+                text: qsTr("Choose a File")
+                highlighted: true
+                onClicked: fileDialog.open()
+            }
+
+            FileDialog {
+                id: fileDialog
+                nameFilters: ["KiCAD Positioning files (*.pos)", "Pcad Pick and Place files (*.pnp)"]
+                //currentFolder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
+                onAccepted: {
+                    fileDialog.OpenFile
+                    KiCADFile.getFilePathUrl(selectedFile);
+                    R_Conf.readingMydataConfigFile();
+                    LibFile.readingMydataLibFile();
+                }
+            }
         }
+
+
 
         Rectangle {
             id: borderCadFileDropArea
             width: cadFileDropArea.width + 5
             height: cadFileDropArea.height + 5
             color: "#00000000"
-            //border.color: "#c30d1263"
-            //border.width: 1
+            border.color: "#c30d1263"
+            border.width: 1
             radius: 10.0
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
             DropArea {
@@ -66,9 +111,12 @@ Window {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 onDropped: {
-                    parent.border.color = "#c30d1263"
-                    parent.border.width = 1
+                    parent.border.color = "#ad0e36"
+                    //parent.border.width = 1
                     console.log(drop.text)
+                    KiCADFile.getFilePathUrl(drop.text);
+                    R_Conf.readingMydataConfigFile();
+                    LibFile.readingMydataLibFile();
                 }
 
                 //Layout.preferredHeight: 200
@@ -113,17 +161,7 @@ Window {
             }
         }
 
-        FileDialog {
-            id: fileDialog
-            nameFilters: ["KiCAD Positioning files (*.pos)", "Pcad Pick and Place files (*.pnp)"]
-            //currentFolder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
-            onAccepted: {
-                fileDialog.OpenFile
-                KiCADFile.getFilePathUrl(selectedFile);
-                R_Conf.readingMydataConfigFile();
-                LibFile.readingMydataLibFile();
-            }
-        }
+
     }
 }
 

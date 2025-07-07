@@ -41,13 +41,13 @@ void WriteLay::WritingMyDataLayFile()
         return;
 
     QTextStream out(&file);
-    out << "S1 " << "CadProjectName" << "\n";
+    out << "S1 " << "CadProjectName" << "\r\n";
     for (int i = 0; i < 10; ++i) {
-        out << "S2" << "\n";
+        out << "S2" << "\r\n";
     }
-    out << "S3B " << "CadProjectName" << "\n";
-    out << "S4M tp11n242" << "\n";
-    out << "S4 " << " " << this->FID1_LAY_X << " " << this->FID1_LAY_Y << " " << this->FID2_LAY_X << " " << this->FID2_LAY_Y << " 0" << " 0" << "\n";
+    out << "S3B " << "CadProjectName" << "\r\n";
+    out << "S4M tp11n242" << "\r\n";
+    out << "S4 " << " " << this->FID1_LAY_X << " " << this->FID1_LAY_Y << " " << this->FID2_LAY_X << " " << this->FID2_LAY_Y << " 0" << " 0" << "\r\n";
 
     //qInfo() << "Finished Writing to MydataLayFile.lay";
 }
