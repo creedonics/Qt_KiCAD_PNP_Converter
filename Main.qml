@@ -1,7 +1,6 @@
-//import QtCore
+import QtCore
 import QtQuick
 import QtQuick.Controls 2.15
-//import QtQuick.Layouts 2.15
 import QtQuick.Dialogs
 import QtQuick.Layouts
 import QtQuick.Window
@@ -16,52 +15,37 @@ Window {
     flags: Qt.Window
     title: qsTr("DuMoulinette")
 
-    /*Connections {
-        target: conf // Specify the target to connect
-        /* Declare and implement the function as a parameter
-         * object and with a name similar to the name of the signal
-         * The difference is that we add on at the beginning and then write
-         * capitalized
-         * *
-
-    }*/
-
     Image {
         id: loremeImage
-        //width: 200
-        //height: 200
         z: -1
         source: "qrc:///src/Loreme.jpg"
-        //anchors.centerIn: parent
         fillMode: Image.PreserveAspectFit
         sourceSize.height: 200
         sourceSize.width: 200
     }
 
-    GridLayout {
-        id: gridLayout
+    Rectangle {
+        id: fileSelectionBorder
         anchors.fill: parent
-        anchors.leftMargin: 50
-        anchors.rightMargin: 50
+        anchors.leftMargin: 280
+        anchors.rightMargin: 280
         anchors.topMargin: 50
         anchors.bottomMargin: 50
-        columnSpacing: 150
-        columns: 2
-        rows: 1
-        uniformCellWidths: true
-        uniformCellHeights: true
-
+        color: "#00000000"
+        border.color: "#c30d1263"
+        border.width: 1
+        radius: 10.0
         ColumnLayout {
             id: fileSelection
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            //width: 200
-            //height: 50
+            anchors.fill: parent
+            spacing: 50
 
             Text {
                 id: fileDialogNote
-                //width: 100
-                //height: 500
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 text: qsTr("Select a KiCAD .pos file or a P-CAD .pnp file to generate the MYDATA manufacturig files")
+                horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.Wrap
                 Layout.maximumWidth: 700
                 maximumLineCount: 3
@@ -72,9 +56,7 @@ Window {
 
             Button {
                 id: fileDialogButton
-                //width: 200
-                //height: 50
-
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 text: qsTr("Choose a File")
                 highlighted: true
                 onClicked: fileDialog.open()
@@ -91,77 +73,69 @@ Window {
                     LibFile.readingMydataLibFile();
                 }
             }
-        }
 
+            Text {
+                id: cadFileDropAreaNote
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                text: qsTr("or drop it here :")
+                horizontalAlignment: Text.AlignHCenter
+                wrapMode: Text.Wrap
+                Layout.maximumWidth: 700
+                maximumLineCount: 3
+                font.pointSize: 22
+                font.family: "Arial"
+                font.bold: true
+            }
 
-
-        Rectangle {
-            id: borderCadFileDropArea
-            width: cadFileDropArea.width + 5
-            height: cadFileDropArea.height + 5
-            color: "#00000000"
-            border.color: "#c30d1263"
-            border.width: 1
-            radius: 10.0
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            DropArea {
-                id: cadFileDropArea
-                width: 200
-                height: 200
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenter: parent.horizontalCenter
-                onDropped: {
-                    parent.border.color = "#ad0e36"
-                    //parent.border.width = 1
-                    console.log(drop.text)
-                    KiCADFile.getFilePathUrl(drop.text);
-                    R_Conf.readingMydataConfigFile();
-                    LibFile.readingMydataLibFile();
-                }
-
-                //Layout.preferredHeight: 200
-                //Layout.preferredWidth: 200
-                Image {
-                    id: dragDropImage
+            Rectangle {
+                id: borderCadFileDropArea
+                width: cadFileDropArea.width + 5
+                height: cadFileDropArea.height + 5
+                color: "#00000000"
+                border.color: "#c30d1263"
+                border.width: 1
+                radius: 10.0
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                DropArea {
+                    id: cadFileDropArea
                     width: 200
                     height: 200
-                    source: "qrc:///src/DragDrop.jpg"
-                    anchors.centerIn: parent
-                    fillMode: Image.PreserveAspectFit
-                    sourceSize.height: 200
-                    sourceSize.width: 200
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onDropped: {
+                        parent.border.color = "#ad0e36"
+                        //parent.border.width = 1
+                        console.log(drop.text)
+                        KiCADFile.getFilePathUrl(drop.text);
+                        R_Conf.readingMydataConfigFile();
+                        LibFile.readingMydataLibFile();
+                    }
+                    Image {
+                        id: dragDropImage
+                        width: 200
+                        height: 200
+                        source: "qrc:///src/DragDrop.jpg"
+                        anchors.centerIn: parent
+                        fillMode: Image.PreserveAspectFit
+                        sourceSize.height: 200
+                        sourceSize.width: 200
+                    }
                 }
             }
-            // MouseArea {
-            //     id: mouseAreaBorder
-            //     anchors.fill: parent
-            //     hoverEnabled: true
-            //     onEntered: {
-            //         parent.border.color = "#c30d1263"
-            //         parent.border.width = 1
-
-            //     }
-            //     onExited: parent.border.color = "#00000000"
-            // }
         }
-
-
-        Button {
-            id: configButton
-            width: 200
-            height: 50
-            text: qsTr("Configuration")
-            Layout.columnSpan: 2
-            Layout.rowSpan: 1
-            Layout.preferredWidth: -1
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            onClicked: {
-                var component = Qt.createComponent("ConfigWindow.qml");
-                component.createObject();
-            }
-        }
-
-
     }
+
+    Button {
+        id: configButton
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.margins: 50
+        text: qsTr("Configuration")
+        onClicked: {
+            var component = Qt.createComponent("ConfigWindow.qml");
+            component.createObject();
+        }
+    }
+
 }
 
