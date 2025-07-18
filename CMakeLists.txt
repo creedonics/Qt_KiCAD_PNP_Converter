@@ -38,6 +38,7 @@ qt_add_qml_module(appTest_QML
         SOURCES readlibfile.h readlibfile.cpp
         SOURCES writelay.h writelay.cpp
         SOURCES writepcb.h writepcb.cpp
+        QML_FILES LibraryWindow.qml
 )
 
 

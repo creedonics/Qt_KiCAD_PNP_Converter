@@ -369,7 +369,6 @@ Window {
             }
         }
 
-
         Button {
             id: clearButton
             width: 200

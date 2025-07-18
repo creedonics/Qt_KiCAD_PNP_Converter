@@ -295,10 +295,14 @@ void CadData::ApplyConfigurations()
     // FID1
     FID1_LAY_X = (FID1_LAY_X + this->ConfigData[Conf_OffsetX].toDouble()) * this->ConfigData[Conf_Scale].toDouble();
     FID1_LAY_Y = (FID1_LAY_Y + this->ConfigData[Conf_OffsetY].toDouble()) * this->ConfigData[Conf_Scale].toDouble();
+    FID1_LAY_X = round(FID1_LAY_X);
+    FID1_LAY_Y = round(FID1_LAY_Y);
 
     // FID2
     FID2_LAY_X = (FID2_LAY_X + this->ConfigData[Conf_OffsetX].toDouble()) * this->ConfigData[Conf_Scale].toDouble();
     FID2_LAY_Y = (FID2_LAY_Y + this->ConfigData[Conf_OffsetY].toDouble()) * this->ConfigData[Conf_Scale].toDouble();
+    FID2_LAY_X = round(FID2_LAY_X);
+    FID2_LAY_Y = round(FID2_LAY_Y);
     //-------------------------------------------------------------------------------------------------//
 
     KiCADData_buf = this->KiCADData;
@@ -324,13 +328,13 @@ void CadData::ApplyConfigurations()
         //-------------------------------------------------------------------------------------------------//
 
         //-----------------------*** Converting the values from mm to mils ***-----------------------------//
-        Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] * 39.3701;
-        Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * 39.3701;
+        Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] * 39.37007;
+        Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * 39.37007;
         //-------------------------------------------------------------------------------------------------//
 
         //--------------------*** Adapting the KiCAD Values to match the PNP ones ***----------------------//
-        Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] + 125;
-        Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] + 7725;
+        //Comp_buf[i][PosX_buf] = Comp_buf[i][PosX_buf] + 125;
+        //Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] + 7725;
         //Comp_buf[i][PosY_buf] = Comp_buf[i][PosY_buf] * (-1);
         //-------------------------------------------------------------------------------------------------//
 
@@ -404,12 +408,14 @@ void CadData::FindFiducials(QStringList _KiCADData)
     if(_KiCADData[0].contains("FID1")){
         FID1_X = _KiCADData[PosX].toDouble();
         FID1_Y = _KiCADData[PosY].toDouble();
-        FID1_X = FID1_X * 39.3701;
+        FID1_X = FID1_X * 39.37007;
         FID1_X = round(FID1_X);
         // Applying mirroring for KiCAD
-        FID1_Y = FID1_Y * (-1);
-        FID1_Y = FID1_Y * 39.3701;
+        //FID1_Y = FID1_Y * (-1);
+        FID1_Y = FID1_Y * 39.37007;
         FID1_Y = round(FID1_Y);
+
+
         FID1_PCB_X = FID1_X;
         FID1_PCB_Y = FID1_Y;
         FID1_LAY_X = FID1_X;
@@ -422,15 +428,17 @@ void CadData::FindFiducials(QStringList _KiCADData)
         FID2_Y = _KiCADData[PosY].toDouble();
         // Inch to Mils
         //FID2_X = FID2_X * 1000;
-        FID2_X = FID2_X * 39.3701;
+        FID2_X = FID2_X * 39.37007;
         FID2_X = round(FID2_X);
         // Inch to Mils
         //FID2_Y = FID2_Y * 1000;
         // Applying mirroring for KiCAD
-        FID2_Y = FID2_Y * (-1);
-        FID2_Y = FID2_Y * 39.3701;
+        //FID2_Y = FID2_Y * (-1);
+        FID2_Y = FID2_Y * 39.37007;
         //if(Conf->Mirroir == 0) FID2_PCB_Y = FID2_PCB_Y * (-1);
         FID2_Y = round(FID2_Y);
+
+
         FID2_PCB_X = FID2_X;
         FID2_PCB_Y = FID2_Y;
         FID2_LAY_X = FID2_X;

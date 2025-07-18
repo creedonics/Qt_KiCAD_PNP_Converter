@@ -104,8 +104,7 @@ Window {
                     anchors.horizontalCenter: parent.horizontalCenter
                     onDropped: {
                         parent.border.color = "#ad0e36"
-                        //parent.border.width = 1
-                        console.log(drop.text)
+                        //console.log(drop.text)
                         KiCADFile.getFilePathUrl(drop.text);
                         R_Conf.readingMydataConfigFile();
                         LibFile.readingMydataLibFile();
@@ -133,6 +132,18 @@ Window {
         text: qsTr("Configuration")
         onClicked: {
             var component = Qt.createComponent("ConfigWindow.qml");
+            component.createObject();
+        }
+    }
+
+    Button {
+        id: libButton
+        anchors.right: parent.right
+        anchors.bottom: configButton.top
+        anchors.margins: 50
+        text: qsTr("Library")
+        onClicked: {
+            var component = Qt.createComponent("LibraryWindow.qml");
             component.createObject();
         }
     }
